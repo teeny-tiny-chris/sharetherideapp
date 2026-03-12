@@ -413,9 +413,7 @@
           <div class="field full">
             <label for="dates" id="datesLabel">Ημερομηνίες διαδρομής</label>
             <input id="dateInput" type="date" />
-            <div class="actions">
-              <button class="secondary" type="button" id="addDateBtn">Προσθήκη ημερομηνίας</button>
-              <button class="secondary" type="button" id="clearDatesBtn">Καθαρισμός ημερομηνιών</button>
+            <div class="actions"><button class="secondary" type="button" id="clearDatesBtn">Καθαρισμός ημερομηνιών</button>
             </div>
             <div class="hint" id="datesHint">Κάθε ημερομηνία θα μετατραπεί σε hashtag με τη μορφή #Τετάρτη01092021.</div>
             <select id="dates" multiple></select>
@@ -535,14 +533,14 @@
       { el: 'Κάρυστος', en: 'Karystos', parent: 'Εύβοια' },
       { el: 'Ερέτρια', en: 'Eretria', parent: 'Εύβοια' },
       { el: 'Αλιβέρι', en: 'Aliveri', parent: 'Εύβοια' },
-      { el: 'Πορταριά, en: 'Portaria', parent: 'Πήλιο' },
-      { el: 'Μακρυνίτσα, en: 'Makrinitsa', parent: 'Πήλιο' },
-      { el: 'Πινακάτες, en: 'Pinakates', parent: 'Πήλιο' },
-      { el: 'Βυζίτσα, en: 'Vizitsa', parent: 'Πήλιο' },
-      { el: 'Μηλιές, en: 'Milies', parent: 'Πήλιο' },
-      { el: 'Τσαγκαράδα, en: 'Tsagkarada', parent: 'Πήλιο' },
-      { el: 'Μηλίνα, en: 'Milina', parent: 'Πήλιο' },
-      { el: 'Ζαγορά, en: 'Zagora', parent: 'Πήλιο' },
+      { el: 'Πορταριά', en: 'Portaria', parent: 'Πήλιο' },
+      { el: 'Μακρυνίτσα', en: 'Makrinitsa', parent: 'Πήλιο' },
+      { el: 'Πινακάτες', en: 'Pinakates', parent: 'Πήλιο' },
+      { el: 'Βυζίτσα', en: 'Vizitsa', parent: 'Πήλιο' },
+      { el: 'Μηλιές', en: 'Milies', parent: 'Πήλιο' },
+      { el: 'Τσαγκαράδα', en: 'Tsagkarada', parent: 'Πήλιο' },
+      { el: 'Μηλίνα', en: 'Milina', parent: 'Πήλιο' },
+      { el: 'Ζαγορά', en: 'Zagora', parent: 'Πήλιο' },
       { el: 'Πήλιο', en: 'Pelion' },
       { el: 'Χανιά', en: 'Chania', parent: 'Κρήτη' },
       { el: 'Ρέθυμνο', en: 'Rethymno', parent: 'Κρήτη' },
@@ -598,9 +596,7 @@
         destinationsLabel: 'Πόλη προορισμού',
         destinationsHint: 'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα. Μπορείς να προσθέσεις περισσότερες από μία.',
         datesLabel: 'Ημερομηνίες διαδρομής',
-        datesHint: 'Κάθε ημερομηνία θα μετατραπεί σε hashtag με τη μορφή #Τετάρτη01092021.',
-        addDateBtn: 'Προσθήκη ημερομηνίας',
-        clearDatesBtn: 'Καθαρισμός ημερομηνιών',
+        datesHint: 'Κάθε ημερομηνία θα μετατραπεί σε hashtag με τη μορφή #Τετάρτη01092021.',        clearDatesBtn: 'Καθαρισμός ημερομηνιών',
         generateBtn: 'Δημιουργία hashtags',
         copyBtn: 'Αντιγραφή',
         clearAllBtn: 'Καθαρισμός όλων',
@@ -634,9 +630,7 @@
         destinationsLabel: 'Destination city',
         destinationsHint: 'Start typing and choose a city from the list. You can add more than one.',
         datesLabel: 'Trip dates',
-        datesHint: 'Each date will become a hashtag in the format #Τετάρτη01092021.',
-        addDateBtn: 'Add date',
-        clearDatesBtn: 'Clear dates',
+        datesHint: 'Each date will become a hashtag in the format #Τετάρτη01092021.',        clearDatesBtn: 'Clear dates',
         generateBtn: 'Generate hashtags',
         copyBtn: 'Copy',
         clearAllBtn: 'Clear all',
@@ -871,9 +865,7 @@
       document.getElementById('destinationsLabel').textContent = t.destinationsLabel;
       document.getElementById('destinationsHint').textContent = t.destinationsHint;
       document.getElementById('datesLabel').textContent = t.datesLabel;
-      document.getElementById('datesHint').textContent = t.datesHint;
-      document.getElementById('addDateBtn').textContent = t.addDateBtn;
-      document.getElementById('clearDatesBtn').textContent = t.clearDatesBtn;
+      document.getElementById('datesHint').textContent = t.datesHint;      document.getElementById('clearDatesBtn').textContent = t.clearDatesBtn;
       document.getElementById('generateBtn').textContent = t.generateBtn;
       document.getElementById('copyBtn').textContent = t.copyBtn;
       document.getElementById('clearAllBtn').textContent = t.clearAllBtn;
@@ -898,8 +890,8 @@
 
     document.getElementById('lang-el').addEventListener('click', () => setLanguage('el'));
     document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-    document.getElementById('addDateBtn').addEventListener('click', addDate);
     dateInput.addEventListener('change', addDate);
+    dateInput.addEventListener('input', addDate);
     document.getElementById('clearDatesBtn').addEventListener('click', () => {
       datesState.length = 0;
       renderDates();
