@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share the Ride – Hashtag Generator</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dbe3ee;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --soft: #eef4ff;
+      --success: #0f766e;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f7f9fc 0%, #eef4fb 100%);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 56px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 28px 24px 20px;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #f8fbff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      line-height: 1.15;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 760px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 4px;
+      border-radius: 999px;
+      gap: 4px;
+    }
+
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .lang-switch button.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .content {
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      margin-top: -2px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+    }
+
+    select[multiple] {
+      min-height: 170px;
+      padding: 10px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    button.primary, button.secondary {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    button.primary:hover { background: var(--primary-hover); }
+
+    button.secondary {
+      background: var(--soft);
+      color: var(--primary);
+      border: 1px solid #cfe0ff;
+    }
+
+    .output {
+      background: #fbfdff;
+      border: 1px dashed #bdd0f7;
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 140px;
+    }
+
+    .output-label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    #result {
+      white-space: pre-wrap;
+      line-height: 1.7;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    .success {
+      color: var(--success);
+      font-size: 0.92rem;
+      font-weight: 700;
+      min-height: 1.2em;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.55rem; }
+      .hero, .content { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <h1 id="title">Share the Ride – Δημιουργία Hashtags</h1>
+        <p class="sub" id="subtitle">Συμπλήρωσε τα στοιχεία της διαδρομής και πάτησε το κουμπί για να δημιουργήσεις έτοιμα hashtags για την ανάρτησή σου. Οι ετικέτες παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.</p>
+        <div class="toolbar">
+          <div class="lang-switch" aria-label="Language switch">
+            <button id="lang-el" class="active" type="button">Ελληνικά</button>
+            <button id="lang-en" type="button">English</button>
+          </div>
+          <div class="footer-note" id="top-note">Μπορείς να επιλέξεις πολλές πόλεις, ενδιάμεσους σταθμούς και πολλές ημερομηνίες.</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="grid">
+          <div class="field">
+            <label for="rideType" id="rideTypeLabel">Τύπος ανάρτησης</label>
+            <select id="rideType">
+              <option value="Αναζητώ">Αναζητώ</option>
+              <option value="Προσφέρω">Προσφέρω</option>
+              <option value="Αναζητώ,Προσφέρω">Και τα δύο</option>
+            </select>
+            <div class="hint" id="rideTypeHint">Το ελάχιστο απαιτούμενο είναι μία ετικέτα τύπου ανάρτησης.</div>
+          </div>
+
+          <div class="field">
+            <label for="petTag" id="petTagLabel">Προαιρετικές ετικέτες</label>
+            <select id="petTag" multiple>
+              <option value="pet">#pet</option>
+              <option value="Συστηματικά">#Συστηματικά</option>
+            </select>
+            <div class="hint" id="petTagHint">Κράτα πατημένο Ctrl / Cmd για πολλαπλή επιλογή στον υπολογιστή.</div>
+          </div>
+
+          <div class="field full">
+            <label for="origins" id="originsLabel">Πόλη εκκίνησης</label>
+            <select id="origins" multiple></select>
+            <div class="hint" id="originsHint">Διάλεξε μία ή περισσότερες πόλεις εκκίνησης.</div>
+          </div>
+
+          <div class="field full">
+            <label for="stops" id="stopsLabel">Ενδιάμεσοι σταθμοί</label>
+            <select id="stops" multiple></select>
+            <div class="hint" id="stopsHint">Πρόσθεσε όσες ενδιάμεσες στάσεις εξυπηρετούν. Θα μπουν και αυτές ως hashtags.</div>
+          </div>
+
+          <div class="field full">
+            <label for="destinations" id="destinationsLabel">Πόλη προορισμού</label>
+            <select id="destinations" multiple></select>
+            <div class="hint" id="destinationsHint">Διάλεξε μία ή περισσότερες πόλεις προορισμού.</div>
+          </div>
+
+          <div class="field full">
+            <label for="dates" id="datesLabel">Ημερομηνίες διαδρομής</label>
+            <input id="dateInput" type="date" />
+            <div class="actions">
+              <button class="secondary" type="button" id="addDateBtn">Προσθήκη ημερομηνίας</button>
+              <button class="secondary" type="button" id="clearDatesBtn">Καθαρισμός ημερομηνιών</button>
+            </div>
+            <div class="hint" id="datesHint">Κάθε ημερομηνία θα μετατραπεί σε hashtag με τη μορφή #Τετάρτη01092021.</div>
+            <select id="dates" multiple></select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="generateBtn">Δημιουργία hashtags</button>
+          <button class="secondary" type="button" id="copyBtn">Αντιγραφή</button>
+          <button class="secondary" type="button" id="clearAllBtn">Καθαρισμός όλων</button>
+        </div>
+
+        <div class="output">
+          <div class="output-label" id="outputLabel">Έτοιμα hashtags</div>
+          <div id="result"></div>
+        </div>
+        <div class="success" id="successMsg"></div>
+
+        <div class="footer-note" id="footerNote">
+          Σημείωση: οι ετικέτες δημιουργούνται πάντα στα Ελληνικά. Οι πόλεις με δύο λέξεις βγαίνουν χωρίς κενά, π.χ. #ΝέαΠέραμος.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cityOptions = [
+  { el: 'Αθήνα', en: 'Athens' },
+  { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
+  { el: 'Πάτρα', en: 'Patras' },
+  { el: 'Ηράκλειο', en: 'Heraklion' },
+  { el: 'Λάρισα', en: 'Larisa' },
+  { el: 'Αγρίνιο', en: 'Agrinio' },
+  { el: 'Άγιος Νικόλαος', en: 'Agios Nikolaos' },
+  { el: 'Αλεξανδρούπολη', en: 'Alexandroupoli' },
+  { el: 'Αμαλιάδα', en: 'Amaliada' },
+  { el: 'Άργος', en: 'Argos' },
+  { el: 'Άρτα', en: 'Arta' },
+  { el: 'Ασπρόπυργος', en: 'Aspropyrgos' },
+  { el: 'Βέροια', en: 'Veria' },
+  { el: 'Βόλος', en: 'Volos' },
+  { el: 'Γιάννενα', en: 'Ioannina' },
+  { el: 'Γιαννιτσά', en: 'Giannitsa' },
+  { el: 'Γρεβενά', en: 'Grevena' },
+  { el: 'Διδυμότειχο', en: 'Didymoteicho' },
+  { el: 'Δράμα', en: 'Drama' },
+  { el: 'Έδεσσα', en: 'Edessa' },
+  { el: 'Ελευσίνα', en: 'Elefsina' },
+  { el: 'Ζάκυνθος', en: 'Zakynthos' },
+  { el: 'Ηγουμενίτσα', en: 'Igoumenitsa' },
+  { el: 'Θήβα', en: 'Thebes' },
+  { el: 'Ιεράπετρα', en: 'Ierapetra' },
+  { el: 'Καβάλα', en: 'Kavala' },
+  { el: 'Καλαμάτα', en: 'Kalamata' },
+  { el: 'Καρδίτσα', en: 'Karditsa' },
+  { el: 'Καστοριά', en: 'Kastoria' },
+  { el: 'Κατερίνη', en: 'Katerini' },
+  { el: 'Κέρκυρα', en: 'Corfu' },
+  { el: 'Κιλκίς', en: 'Kilkis' },
+  { el: 'Κοζάνη', en: 'Kozani' },
+  { el: 'Κομοτηνή', en: 'Komotini' },
+  { el: 'Κόρινθος', en: 'Corinth' },
+  { el: 'Κως', en: 'Kos' },
+  { el: 'Λαμία', en: 'Lamia' },
+  { el: 'Λευκάδα', en: 'Lefkada' },
+  { el: 'Λιβαδειά', en: 'Livadeia' },
+  { el: 'Μεσολόγγι', en: 'Mesolongi' },
+  { el: 'Μέγαρα', en: 'Megara' },
+  { el: 'Μυτιλήνη', en: 'Mytilene' },
+  { el: 'Νάουσα', en: 'Naousa' },
+  { el: 'Ναύπλιο', en: 'Nafplio' },
+  { el: 'Ναύπακτος', en: 'Nafpaktos' },
+  { el: 'Ξάνθη', en: 'Xanthi' },
+  { el: 'Ορεστιάδα', en: 'Orestiada' },
+  { el: 'Πειραιάς', en: 'Piraeus' },
+  { el: 'Πολύγυρος', en: 'Polygyros' },
+  { el: 'Πρέβεζα', en: 'Preveza' },
+  { el: 'Πτολεμαΐδα', en: 'Ptolemaida' },
+  { el: 'Πύργος', en: 'Pyrgos' },
+  { el: 'Ραφήνα', en: 'Rafina' },
+  { el: 'Ρέθυμνο', en: 'Rethymno' },
+  { el: 'Ρόδος', en: 'Rhodes' },
+  { el: 'Σάμος', en: 'Samos' },
+  { el: 'Σέρρες', en: 'Serres' },
+  { el: 'Σπάρτη', en: 'Sparta' },
+  { el: 'Τρίκαλα', en: 'Trikala' },
+  { el: 'Τρίπολη', en: 'Tripoli' },
+  { el: 'Φλώρινα', en: 'Florina' },
+  { el: 'Χαλκίδα', en: 'Chalkida' },
+  { el: 'Χανιά', en: 'Chania' },
+  { el: 'Χίος', en: 'Chios' }
+    ];
+
+    const weekdayGreek = ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'];
+    const datesState = [];
+    let lang = 'el';
+
+    const t = {
+      el: {
+        title: 'Share the Ride – Δημιουργία Hashtags',
+        subtitle: 'Συμπλήρωσε τα στοιχεία της διαδρομής και πάτησε το κουμπί για να δημιουργήσεις έτοιμα hashtags για την ανάρτησή σου. Οι ετικέτες παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.',
+        topNote: 'Μπορείς να επιλέξεις πολλές πόλεις, ενδιάμεσους σταθμούς και πολλές ημερομηνίες.',
+        rideTypeLabel: 'Τύπος ανάρτησης',
+        rideTypeHint: 'Το ελάχιστο απαιτούμενο είναι μία ετικέτα τύπου ανάρτησης.',
+        petTagLabel: 'Προαιρετικές ετικέτες',
+        petTagHint: 'Κράτα πατημένο Ctrl / Cmd για πολλαπλή επιλογή στον υπολογιστή.',
+        originsLabel: 'Πόλη εκκίνησης',
+        originsHint: 'Διάλεξε μία ή περισσότερες πόλεις εκκίνησης.',
+        stopsLabel: 'Ενδιάμεσοι σταθμοί',
+        stopsHint: 'Πρόσθεσε όσες ενδιάμεσες στάσεις εξυπηρετούν. Θα μπουν και αυτές ως hashtags.',
+        destinationsLabel: 'Πόλη προορισμού',
+        destinationsHint: 'Διάλεξε μία ή περισσότερες πόλεις προορισμού.',
+        datesLabel: 'Ημερομηνίες διαδρομής',
+        datesHint: 'Κάθε ημερομηνία θα μετατραπεί σε hashtag με τη μορφή #Τετάρτη01092021.',
+        addDateBtn: 'Προσθήκη ημερομηνίας',
+        clearDatesBtn: 'Καθαρισμός ημερομηνιών',
+        generateBtn: 'Δημιουργία hashtags',
+        copyBtn: 'Αντιγραφή',
+        clearAllBtn: 'Καθαρισμός όλων',
+        outputLabel: 'Έτοιμα hashtags',
+        footerNote: 'Σημείωση: οι ετικέτες δημιουργούνται πάντα στα Ελληνικά. Οι πόλεις με δύο λέξεις βγαίνουν χωρίς κενά, π.χ. #ΝέαΠέραμος.',
+        copySuccess: 'Τα hashtags αντιγράφηκαν.',
+        noResult: 'Εδώ θα εμφανιστούν τα hashtags.',
+        missingDates: 'Πρόσθεσε τουλάχιστον μία ημερομηνία.',
+        missingOrigins: 'Διάλεξε τουλάχιστον μία πόλη εκκίνησης.',
+        missingDestinations: 'Διάλεξε τουλάχιστον μία πόλη προορισμού.'
+      },
+      en: {
+        title: 'Share the Ride – Hashtag Generator',
+        subtitle: 'Fill in the trip details and generate ready-to-copy hashtags for your post. The hashtags are always produced in Greek, according to the group rules.',
+        topNote: 'You can select multiple cities, intermediate stops, and multiple dates.',
+        rideTypeLabel: 'Post type',
+        rideTypeHint: 'At least one ride-type hashtag is required.',
+        petTagLabel: 'Optional hashtags',
+        petTagHint: 'On desktop, hold Ctrl / Cmd to select more than one option.',
+        originsLabel: 'Origin city',
+        originsHint: 'Choose one or more origin cities.',
+        stopsLabel: 'Intermediate stops',
+        stopsHint: 'Add any intermediate stops that should also appear as hashtags.',
+        destinationsLabel: 'Destination city',
+        destinationsHint: 'Choose one or more destination cities.',
+        datesLabel: 'Trip dates',
+        datesHint: 'Each date will become a hashtag in the format #Τετάρτη01092021.',
+        addDateBtn: 'Add date',
+        clearDatesBtn: 'Clear dates',
+        generateBtn: 'Generate hashtags',
+        copyBtn: 'Copy',
+        clearAllBtn: 'Clear all',
+        outputLabel: 'Ready hashtags',
+        footerNote: 'Note: hashtags are always generated in Greek. Cities with two words appear without spaces, for example #ΝέαΠέραμος.',
+        copySuccess: 'The hashtags were copied.',
+        noResult: 'Your hashtags will appear here.',
+        missingDates: 'Please add at least one date.',
+        missingOrigins: 'Please choose at least one origin city.',
+        missingDestinations: 'Please choose at least one destination city.'
+      }
+    };
+
+    const rideTypeSelect = document.getElementById('rideType');
+    const optionalTagsSelect = document.getElementById('petTag');
+    const originsSelect = document.getElementById('origins');
+    const stopsSelect = document.getElementById('stops');
+    const destinationsSelect = document.getElementById('destinations');
+    const datesSelect = document.getElementById('dates');
+    const dateInput = document.getElementById('dateInput');
+    const result = document.getElementById('result');
+    const successMsg = document.getElementById('successMsg');
+
+    function normalizeHashtagText(text) {
+      return text.replace(/\s+/g, '');
+    }
+
+    function getSelectedValues(select) {
+      return Array.from(select.selectedOptions).map(o => o.value);
+    }
+
+    function populateCities() {
+      [originsSelect, stopsSelect, destinationsSelect].forEach(select => {
+        select.innerHTML = '';
+        cityOptions.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city.el;
+          option.textContent = lang === 'el' ? city.el : `${city.en} — ${city.el}`;
+          select.appendChild(option);
+        });
+      });
+    }
+
+    function formatDateHashtag(isoDate) {
+      const [year, month, day] = isoDate.split('-').map(Number);
+      const d = new Date(year, month - 1, day);
+      const weekday = weekdayGreek[d.getDay()];
+      const dd = String(day).padStart(2, '0');
+      const mm = String(month).padStart(2, '0');
+      const yyyy = String(year);
+      return `${weekday}${dd}${mm}${yyyy}`;
+    }
+
+    function renderDates() {
+      datesSelect.innerHTML = '';
+      datesState.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = `#${formatDateHashtag(value)}`;
+        option.selected = true;
+        datesSelect.appendChild(option);
+      });
+    }
+
+    function addDate() {
+      const value = dateInput.value;
+      if (!value) return;
+      if (!datesState.includes(value)) {
+        datesState.push(value);
+        datesState.sort();
+      }
+      renderDates();
+      dateInput.value = '';
+      successMsg.textContent = '';
+    }
+
+    function setLanguage(newLang) {
+      lang = newLang;
+      document.getElementById('lang-el').classList.toggle('active', lang === 'el');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+
+      Object.entries(t[lang]).forEach(([key, value]) => {
+        const el = document.getElementById(key);
+        if (el) el.textContent = value;
+      });
+
+      const rideOptions = lang === 'el'
+        ? ['Αναζητώ', 'Προσφέρω', 'Και τα δύο']
+        : ['Looking for a ride', 'Offering a ride', 'Both'];
+
+      Array.from(rideTypeSelect.options).forEach((option, index) => option.textContent = rideOptions[index]);
+      Array.from(optionalTagsSelect.options).forEach((option) => {
+        if (option.value === 'pet') option.textContent = '#pet';
+        if (option.value === 'Συστηματικά') option.textContent = '#Συστηματικά';
+      });
+      populateCities();
+      renderDates();
+      if (!result.textContent.trim()) result.textContent = t[lang].noResult;
+    }
+
+    function generateHashtags() {
+      successMsg.textContent = '';
+      const origins = getSelectedValues(originsSelect);
+      const stops = getSelectedValues(stopsSelect);
+      const destinations = getSelectedValues(destinationsSelect);
+
+      if (!origins.length) {
+        result.textContent = t[lang].missingOrigins;
+        return;
+      }
+      if (!destinations.length) {
+        result.textContent = t[lang].missingDestinations;
+        return;
+      }
+      if (!datesState.length) {
+        result.textContent = t[lang].missingDates;
+        return;
+      }
+
+      const rideTypes = rideTypeSelect.value.split(',').map(v => v.trim());
+      const optional = getSelectedValues(optionalTagsSelect);
+
+      const hashtags = [];
+      rideTypes.forEach(type => hashtags.push(`#${type}`));
+      origins.forEach(city => hashtags.push(`#${normalizeHashtagText(city)}`));
+      stops.forEach(city => hashtags.push(`#${normalizeHashtagText(city)}`));
+      destinations.forEach(city => hashtags.push(`#${normalizeHashtagText(city)}`));
+      datesState.forEach(date => hashtags.push(`#${formatDateHashtag(date)}`));
+      optional.forEach(tag => hashtags.push(`#${tag}`));
+
+      const unique = [...new Set(hashtags)];
+      result.textContent = unique.join(' ');
+    }
+
+    async function copyResult() {
+      const text = result.textContent.trim();
+      if (!text || text === t[lang].noResult || text === t[lang].missingDates || text === t[lang].missingOrigins || text === t[lang].missingDestinations) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        successMsg.textContent = t[lang].copySuccess;
+      } catch {
+        successMsg.textContent = 'Copy failed.';
+      }
+    }
+
+    function clearAll() {
+      rideTypeSelect.selectedIndex = 0;
+      optionalTagsSelect.selectedIndex = -1;
+      [originsSelect, stopsSelect, destinationsSelect].forEach(select => {
+        Array.from(select.options).forEach(option => option.selected = false);
+      });
+      datesState.length = 0;
+      renderDates();
+      result.textContent = t[lang].noResult;
+      successMsg.textContent = '';
+      dateInput.value = '';
+    }
+
+    document.getElementById('lang-el').addEventListener('click', () => setLanguage('el'));
+    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+    document.getElementById('addDateBtn').addEventListener('click', addDate);
+    document.getElementById('clearDatesBtn').addEventListener('click', () => {
+      datesState.length = 0;
+      renderDates();
+      successMsg.textContent = '';
+    });
+    document.getElementById('generateBtn').addEventListener('click', generateHashtags);
+    document.getElementById('copyBtn').addEventListener('click', copyResult);
+    document.getElementById('clearAllBtn').addEventListener('click', clearAll);
+
+    populateCities();
+    result.textContent = t.el.noResult;
+  </script>
+</body>
+</html>
