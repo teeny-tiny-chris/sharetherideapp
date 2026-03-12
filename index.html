@@ -348,6 +348,9 @@
           <div class="lang-switch" aria-label="Language switch">
             <button id="lang-el" class="active" type="button">Ελληνικά</button>
             <button id="lang-en" type="button">English</button>
+            <button id="lang-de" type="button">Deutsch</button>
+            <button id="lang-fr" type="button">Français</button>
+            <button id="lang-nl" type="button">Nederlands</button>
           </div>
           <div class="footer-note" id="top-note">Μπορείς να αναζητήσεις πόλεις με πληκτρολόγηση, να προσθέσεις ενδιάμεσους σταθμούς και πολλές ημερομηνίες.</div>
         </div>
@@ -445,8 +448,8 @@
 
   <script>
     const cityOptions = [
-      { el: 'Αθήνα', en: 'Athens' },
-      { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
+      { el: 'Αθήνα', en: 'Athens', de: 'Athen', fr: 'Athènes', nl: 'Athene' },
+      { el: 'Θεσσαλονίκη', en: 'Thessaloniki', de: 'Thessaloniki', fr: 'Thessalonique', nl: 'Thessaloniki' },
       { el: 'Πάτρα', en: 'Patras' },
       { el: 'Ηράκλειο', en: 'Heraklion' },
       { el: 'Λάρισα', en: 'Larisa' },
@@ -466,14 +469,14 @@
       { el: 'Έδεσσα', en: 'Edessa' },
       { el: 'Ελευσίνα', en: 'Elefsina' },
       { el: 'Ζάκυνθος', en: 'Zakynthos' },
-      { el: 'Ηγουμενίτσα', en: 'Igoumenitsa' },
+      { el: 'Ηγουμενίτσα', en: 'Igoumenitsa', de: 'Igoumenitsa', fr: 'Igoumenitsa', nl: 'Igoumenitsa' },
       { el: 'Θήβα', en: 'Thebes' },
       { el: 'Καβάλα', en: 'Kavala' },
       { el: 'Καλαμάτα', en: 'Kalamata' },
       { el: 'Καρδίτσα', en: 'Karditsa' },
       { el: 'Καστοριά', en: 'Kastoria' },
       { el: 'Κατερίνη', en: 'Katerini' },
-      { el: 'Κέρκυρα', en: 'Corfu' },
+      { el: 'Κέρκυρα', en: 'Corfu', de: 'Korfu', fr: 'Corfou', nl: 'Corfu' },
       { el: 'Κιλκίς', en: 'Kilkis' },
       { el: 'Κοζάνη', en: 'Kozani' },
       { el: 'Κομοτηνή', en: 'Komotini' },
@@ -578,6 +581,15 @@
       { el: 'Χαλκιδική', en: 'Chalkidiki' }
     ];
 
+    const parentTranslations = {
+      'Αθήνα': { el: 'Αθήνα', en: 'Athens', de: 'Athen', fr: 'Athènes', nl: 'Athene' },
+      'Θεσσαλονίκη': { el: 'Θεσσαλονίκη', en: 'Thessaloniki', de: 'Thessaloniki', fr: 'Thessalonique', nl: 'Thessaloniki' },
+      'Εύβοια': { el: 'Εύβοια', en: 'Evia', de: 'Evia', fr: 'Eubée', nl: 'Evia' },
+      'Κρήτη': { el: 'Κρήτη', en: 'Crete', de: 'Kreta', fr: 'Crète', nl: 'Kreta' },
+      'Χαλκιδική': { el: 'Χαλκιδική', en: 'Chalkidiki', de: 'Chalkidiki', fr: 'Chalcidique', nl: 'Chalkidiki' },
+      'Πήλιο': { el: 'Πήλιο', en: 'Pelion', de: 'Pelion', fr: 'Pélion', nl: 'Pelion' }
+    };
+
     const translations = {
       el: {
         title: 'Share the Ride – Δημιουργία Hashtags',
@@ -612,8 +624,7 @@
         missingDate: 'Πρόσθεσε τουλάχιστον μία ημερομηνία ή χρησιμοποίησε το #Συστηματικά.',
         copied: 'Το κείμενο αντιγράφηκε.',
         parentAuto: 'Το βασικό hashtag προστίθεται αυτόματα.'
-      },
-      en: {
+      },      en: {
         title: 'Share the Ride – Hashtag Generator',
         subtitle: 'Fill in the trip details and press the button to generate ready-to-copy hashtags for your post. The hashtags are always generated in Greek, according to the group rules.',
         topNote: 'You can search cities by typing, add intermediate stops, and add multiple dates.',
@@ -630,7 +641,8 @@
         destinationsLabel: 'Destination city',
         destinationsHint: 'Start typing and choose a city from the list. You can add more than one.',
         datesLabel: 'Trip dates',
-        datesHint: 'Each date will become a hashtag in the format #Τετάρτη01092021.',        clearDatesBtn: 'Clear dates',
+        datesHint: 'Each date will become a hashtag in the format #Τετάρτη01092021.',
+        clearDatesBtn: 'Clear dates',
         generateBtn: 'Generate hashtags',
         copyBtn: 'Copy',
         clearAllBtn: 'Clear all',
@@ -646,6 +658,24 @@
         missingDate: 'Please add at least one date or use #Συστηματικά.',
         copied: 'The text was copied.',
         parentAuto: 'The parent hashtag is added automatically.'
+      },
+      de: {
+        title: 'Share the Ride – Hashtag-Generator',
+        subtitle: 'Fülle die Reisedetails aus und erstelle kopierfertige Hashtags für deinen Beitrag. Die Hashtags werden immer auf Griechisch erstellt, gemäß den Gruppenregeln.',
+        topNote: 'Du kannst Städte durch Tippen suchen, Zwischenstopps hinzufügen und mehrere Daten eingeben.',
+        rideTypeLabel: 'Beitragstyp', rideTypeHint: 'Mindestens ein Hashtag für den Beitragstyp ist erforderlich.', petTagLabel: 'Optionale Hashtags', petTagHint: 'Markiere das Kästchen, um den Hashtag einzufügen.', systematikaHint: 'Verwende #Συστηματικά für wiederkehrende Fahrten, zum Beispiel täglich, wöchentlich oder monatlich.', petHint: 'Verwende #pet, wenn es um den Transport eines Haustiers oder eine Begleitung für ein Haustier geht.', originsLabel: 'Startort', originsHint: 'Tippe und wähle eine Stadt aus der Liste. Du kannst mehr als eine hinzufügen.', stopsLabel: 'Zwischenstopps', stopsHint: 'Füge alle Zwischenstopps hinzu, die auch als Hashtags erscheinen sollen.', destinationsLabel: 'Zielort', destinationsHint: 'Tippe und wähle eine Stadt aus der Liste. Du kannst mehr als eine hinzufügen.', datesLabel: 'Reisedaten', datesHint: 'Jedes Datum wird in ein Hashtag im Format #Τετάρτη01092021 umgewandelt.', clearDatesBtn: 'Daten löschen', generateBtn: 'Hashtags erstellen', copyBtn: 'Kopieren', clearAllBtn: 'Alles löschen', outputLabel: 'Fertige Hashtags', footerNote: 'Hinweis: Hashtags werden immer auf Griechisch erstellt. Städte mit zwei Wörtern erscheinen ohne Leerzeichen, zum Beispiel #ΝέαΠέραμος.', messageLabel: 'Nachricht für den Beitrag', messageHint: 'Diese Nachricht wird unter den Hashtags hinzugefügt, damit du den ganzen Beitrag auf einmal kopieren kannst.', messagePlaceholder: 'Schreibe hier die Nachricht, die unter den Hashtags erscheinen soll.', noResult: 'Deine Hashtags erscheinen hier.', invalidCity: 'Bitte wähle eine Stadt aus der Liste.', missingOrigin: 'Bitte wähle mindestens einen Startort.', missingDestination: 'Bitte wähle mindestens einen Zielort.', missingDate: 'Bitte füge mindestens ein Datum hinzu oder verwende #Συστηματικά.', copied: 'Der Text wurde kopiert.', parentAuto: 'Der übergeordnete Hashtag wird automatisch hinzugefügt.'
+      },
+      fr: {
+        title: 'Share the Ride – Générateur de hashtags',
+        subtitle: 'Remplissez les détails du trajet et générez des hashtags prêts à copier pour votre publication. Les hashtags sont toujours générés en grec, selon les règles du groupe.',
+        topNote: 'Vous pouvez rechercher des villes en tapant, ajouter des arrêts intermédiaires et plusieurs dates.',
+        rideTypeLabel: 'Type de publication', rideTypeHint: 'Au moins un hashtag de type de publication est requis.', petTagLabel: 'Hashtags optionnels', petTagHint: 'Cochez la case pour inclure ce hashtag dans le texte final.', systematikaHint: 'Utilisez #Συστηματικά pour les trajets récurrents, par exemple quotidiens, hebdomadaires ou mensuels.', petHint: 'Utilisez #pet lorsque la publication concerne le transport d’un animal ou la recherche d’un accompagnement pour un animal.', originsLabel: 'Ville de départ', originsHint: 'Commencez à taper et choisissez une ville dans la liste. Vous pouvez en ajouter plusieurs.', stopsLabel: 'Arrêts intermédiaires', stopsHint: 'Ajoutez les arrêts intermédiaires qui doivent aussi apparaître comme hashtags.', destinationsLabel: 'Ville d’arrivée', destinationsHint: 'Commencez à taper et choisissez une ville dans la liste. Vous pouvez en ajouter plusieurs.', datesLabel: 'Dates du trajet', datesHint: 'Chaque date deviendra un hashtag au format #Τετάρτη01092021.', clearDatesBtn: 'Effacer les dates', generateBtn: 'Générer les hashtags', copyBtn: 'Copier', clearAllBtn: 'Tout effacer', outputLabel: 'Hashtags prêts', footerNote: 'Remarque : les hashtags sont toujours générés en grec. Les villes en deux mots apparaissent sans espaces, par exemple #ΝέαΠέραμος.', messageLabel: 'Message pour la publication', messageHint: 'Ce message sera ajouté sous les hashtags afin que vous puissiez copier toute la publication en une fois.', messagePlaceholder: 'Écrivez ici le message que vous voulez voir apparaître sous les hashtags.', noResult: 'Vos hashtags apparaîtront ici.', invalidCity: 'Veuillez choisir une ville dans la liste.', missingOrigin: 'Veuillez choisir au moins une ville de départ.', missingDestination: 'Veuillez choisir au moins une ville d’arrivée.', missingDate: 'Veuillez ajouter au moins une date ou utiliser #Συστηματικά.', copied: 'Le texte a été copié.', parentAuto: 'Le hashtag parent est ajouté automatiquement.'
+      },
+      nl: {
+        title: 'Share the Ride – Hashtaggenerator',
+        subtitle: 'Vul de ritgegevens in en maak kant-en-klare hashtags voor je bericht. De hashtags worden altijd in het Grieks gegenereerd, volgens de groepsregels.',
+        topNote: 'Je kunt steden zoeken door te typen, tussenstops toevoegen en meerdere datums invoeren.',
+        rideTypeLabel: 'Berichttype', rideTypeHint: 'Minimaal één hashtag voor het berichttype is vereist.', petTagLabel: 'Optionele hashtags', petTagHint: 'Vink het vakje aan om die hashtag in de uiteindelijke tekst op te nemen.', systematikaHint: 'Gebruik #Συστηματικά voor terugkerende ritten, bijvoorbeeld dagelijks, wekelijks of maandelijks.', petHint: 'Gebruik #pet wanneer het bericht gaat over het vervoeren van een huisdier of begeleiding voor een huisdier.', originsLabel: 'Vertrekstad', originsHint: 'Begin te typen en kies een stad uit de lijst. Je kunt er meer dan één toevoegen.', stopsLabel: 'Tussenstops', stopsHint: 'Voeg alle tussenstops toe die ook als hashtags moeten verschijnen.', destinationsLabel: 'Bestemmingsstad', destinationsHint: 'Begin te typen en kies een stad uit de lijst. Je kunt er meer dan één toevoegen.', datesLabel: 'Reisdata', datesHint: 'Elke datum wordt omgezet naar een hashtag in het formaat #Τετάρτη01092021.', clearDatesBtn: 'Datums wissen', generateBtn: 'Hashtags genereren', copyBtn: 'Kopiëren', clearAllBtn: 'Alles wissen', outputLabel: 'Klaarstaande hashtags', footerNote: 'Opmerking: hashtags worden altijd in het Grieks gegenereerd. Steden met twee woorden verschijnen zonder spaties, bijvoorbeeld #ΝέαΠέραμος.', messageLabel: 'Bericht voor de post', messageHint: 'Dit bericht wordt onder de hashtags toegevoegd zodat je de hele post in één keer kunt kopiëren.', messagePlaceholder: 'Schrijf hier het bericht dat onder de hashtags moet verschijnen.', noResult: 'Je hashtags verschijnen hier.', invalidCity: 'Kies alsjeblieft een stad uit de lijst.', missingOrigin: 'Kies ten minste één vertrekstad.', missingDestination: 'Kies ten minste één bestemmingsstad.', missingDate: 'Voeg ten minste één datum toe of gebruik #Συστηματικά.', copied: 'De tekst is gekopieerd.', parentAuto: 'De bovenliggende hashtag wordt automatisch toegevoegd.'
       }
     };
 
@@ -673,9 +703,16 @@
       return text.replace(/\s+/g, '');
     }
 
+    function getParentLabel(parentName) {
+      const parent = parentTranslations[parentName];
+      if (!parent) return parentName;
+      return parent[lang] || parent.en || parent.el;
+    }
+
     function formatSuggestionLabel(city) {
-      if (lang === 'el') return city.parent ? city.el + ' (' + city.parent + ')' : city.el;
-      return city.parent ? city.en + ' (' + city.parent + ')' : city.en + ' — ' + city.el;
+      const parentLabel = city.parent ? getParentLabel(city.parent) : '';
+      const displayName = city[lang] || city.en || city.el;
+      return city.parent ? displayName + ' (' + parentLabel + ')' : displayName;
     }
 
     function getFilteredCities(query) {
@@ -845,8 +882,10 @@
 
     function setLanguage(newLang) {
       lang = newLang;
-      document.getElementById('lang-el').classList.toggle('active', lang === 'el');
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      ['el', 'en', 'de', 'fr', 'nl'].forEach(code => {
+        const button = document.getElementById('lang-' + code);
+        if (button) button.classList.toggle('active', lang === code);
+      });
       const t = translations[lang];
 
       document.getElementById('title').textContent = t.title;
@@ -877,19 +916,29 @@
       document.getElementById('petHashLabel').textContent = '#pet';
       document.getElementById('systematikaHashLabel').textContent = '#Συστηματικά';
 
-      const rideOptions = lang === 'el' ? ['Αναζητώ', 'Προσφέρω', 'Και τα δύο'] : ['Looking for', 'Offering', 'Both'];
+      const rideOptionsByLang = {
+        el: ['Αναζητώ', 'Προσφέρω', 'Και τα δύο'],
+        en: ['Looking for', 'Offering', 'Both'],
+        de: ['Suche', 'Biete', 'Beides'],
+        fr: ['Je cherche', 'J’offre', 'Les deux'],
+        nl: ['Ik zoek', 'Ik bied aan', 'Beide']
+      };
+      const rideOptions = rideOptionsByLang[lang] || rideOptionsByLang.en;
       Array.from(rideTypeSelect.options).forEach((option, i) => {
         option.textContent = rideOptions[i];
       });
 
       Object.keys(cityFields).forEach(group => hideSuggestions(group));
-      if (!result.textContent.trim() || result.textContent === translations.el.noResult || result.textContent === translations.en.noResult) {
+      if (!result.textContent.trim() || Object.values(translations).some(tr => result.textContent === tr.noResult)) {
         result.textContent = t.noResult;
       }
     }
 
     document.getElementById('lang-el').addEventListener('click', () => setLanguage('el'));
     document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+    document.getElementById('lang-de').addEventListener('click', () => setLanguage('de'));
+    document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
+    document.getElementById('lang-nl').addEventListener('click', () => setLanguage('nl'));
     dateInput.addEventListener('change', addDate);
     dateInput.addEventListener('input', addDate);
     document.getElementById('clearDatesBtn').addEventListener('click', () => {
@@ -903,7 +952,7 @@
     Object.entries(cityFields).forEach(([group, field]) => {
       field.input.addEventListener('input', () => renderSuggestions(group, field.input.value));
       field.input.addEventListener('focus', () => {
-        if (field.input.value.trim()) renderSuggestions(group, field.input.value);
+        renderSuggestions(group, field.input.value);
       });
       field.input.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
