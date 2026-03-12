@@ -72,7 +72,9 @@
       text-decoration: none;
     }
 
-    .group-link a:hover { text-decoration: underline; }
+    .group-link a:hover {
+      text-decoration: underline;
+    }
 
     .toolbar {
       display: flex;
@@ -120,7 +122,11 @@
     }
 
     .full { grid-column: 1 / -1; }
-    .field { display: grid; gap: 8px; }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
 
     label {
       font-weight: 800;
@@ -149,10 +155,19 @@
       border-color: var(--primary-strong);
     }
 
-    select[multiple] { min-height: 90px; padding: 10px; }
-    textarea { resize: vertical; min-height: 110px; }
+    select[multiple] {
+      min-height: 90px;
+      padding: 10px;
+    }
 
-    .search-row { position: relative; }
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .search-row {
+      position: relative;
+    }
 
     .suggestions {
       position: absolute;
@@ -169,7 +184,9 @@
       display: none;
     }
 
-    .suggestions.visible { display: block; }
+    .suggestions.visible {
+      display: block;
+    }
 
     .suggestion-item {
       padding: 12px 14px;
@@ -181,8 +198,13 @@
     .suggestion-item:last-child { border-bottom: 0; }
     .suggestion-item:hover,
     .suggestion-item.active { background: #fff3bf; }
+
     .suggestion-main { font-weight: 600; }
-    .suggestion-sub { color: var(--muted); font-size: 0.88rem; margin-top: 2px; }
+    .suggestion-sub {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 2px;
+    }
 
     .chips {
       display: flex;
@@ -214,7 +236,11 @@
       font-size: 1rem;
     }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
     button.primary, button.secondary {
       border-radius: 14px;
@@ -265,7 +291,9 @@
       accent-color: var(--primary-strong);
     }
 
-    .tag-hash { font-weight: 600; }
+    .tag-hash {
+      font-weight: 600;
+    }
 
     .output {
       background: #fffdf7;
@@ -296,7 +324,11 @@
       min-height: 1.2em;
     }
 
-    .footer-note { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
 
     @media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
@@ -423,7 +455,6 @@
       { el: 'Αγρίνιο', en: 'Agrinio' },
       { el: 'Αλεξανδρούπολη', en: 'Alexandroupoli' },
       { el: 'Αμαλιάδα', en: 'Amaliada' },
-      { el: 'Αμύνταιο', en: 'Amyntaio' },
       { el: 'Άργος', en: 'Argos' },
       { el: 'Άρτα', en: 'Arta' },
       { el: 'Ασπρόπυργος', en: 'Aspropyrgos' },
@@ -504,14 +535,15 @@
       { el: 'Κάρυστος', en: 'Karystos', parent: 'Εύβοια' },
       { el: 'Ερέτρια', en: 'Eretria', parent: 'Εύβοια' },
       { el: 'Αλιβέρι', en: 'Aliveri', parent: 'Εύβοια' },
-      { el: 'Πορταριά', en: 'Portaria', parent: 'Πήλιο' },
-      { el: 'Μακρυνίτσα', en: 'Makrinitsa', parent: 'Πήλιο' },
-      { el: 'Πινακάτες', en: 'Pinakates', parent: 'Πήλιο' },
-      { el: 'Βυζίτσα', en: 'Vizitsa', parent: 'Πήλιο' },
-      { el: 'Μηλιές', en: 'Milies', parent: 'Πήλιο' },
-      { el: 'Τσαγκαράδα', en: 'Tsagkarada', parent: 'Πήλιο' },
-      { el: 'Μηλίνα', en: 'Milina', parent: 'Πήλιο' },
-      { el: 'Ζαγορά', en: 'Zagora', parent: 'Πήλιο' },
+      { el: 'Πορταριά, en: 'Portaria', parent: 'Πήλιο' },
+      { el: 'Μακρυνίτσα, en: 'Makrinitsa', parent: 'Πήλιο' },
+      { el: 'Πινακάτες, en: 'Pinakates', parent: 'Πήλιο' },
+      { el: 'Βυζίτσα, en: 'Vizitsa', parent: 'Πήλιο' },
+      { el: 'Μηλιές, en: 'Milies', parent: 'Πήλιο' },
+      { el: 'Τσαγκαράδα, en: 'Tsagkarada', parent: 'Πήλιο' },
+      { el: 'Μηλίνα, en: 'Milina', parent: 'Πήλιο' },
+      { el: 'Ζαγορά, en: 'Zagora', parent: 'Πήλιο' },
+      { el: 'Πήλιο', en: 'Pelion' },
       { el: 'Χανιά', en: 'Chania', parent: 'Κρήτη' },
       { el: 'Ρέθυμνο', en: 'Rethymno', parent: 'Κρήτη' },
       { el: 'Ηράκλειο', en: 'Heraklion', parent: 'Κρήτη' },
@@ -536,6 +568,7 @@
       { el: 'Πολύχρονο', en: 'Polychrono', parent: 'Χαλκιδική' },
       { el: 'Σάνη', en: 'Sani', parent: 'Χαλκιδική' },
       { el: 'Φούρκα', en: 'Fourka', parent: 'Χαλκιδική' },
+      { el: 'Πευκοχώρι', en: 'Pefkochori', parent: 'Χαλκιδική' },
       { el: 'Αρναία', en: 'Arnaia', parent: 'Χαλκιδική' },
       { el: 'Ιερισσός', en: 'Ierissos', parent: 'Χαλκιδική' },
       { el: 'Κασσάνδρεια', en: 'Kassandreia', parent: 'Χαλκιδική' },
@@ -642,7 +675,9 @@
       destinations: { input: document.getElementById('destinationInput'), chips: document.getElementById('destinationsChips'), suggestions: document.getElementById('destinationSuggestions') }
     };
 
-    function normalizeHashtagText(text) { return text.replace(/\s+/g, ''); }
+    function normalizeHashtagText(text) {
+      return text.replace(/\s+/g, '');
+    }
 
     function formatSuggestionLabel(city) {
       if (lang === 'el') return city.parent ? city.el + ' (' + city.parent + ')' : city.el;
@@ -679,8 +714,12 @@
     }
 
     function addMatchedCity(group, city) {
-      if (!selectedCities[group].includes(city.el)) selectedCities[group].push(city.el);
-      if (city.parent && !selectedCities[group].includes(city.parent)) selectedCities[group].push(city.parent);
+      if (!selectedCities[group].includes(city.el)) {
+        selectedCities[group].push(city.el);
+      }
+      if (city.parent && !selectedCities[group].includes(city.parent)) {
+        selectedCities[group].push(city.parent);
+      }
       cityFields[group].input.value = '';
       renderCityChips(group);
       hideSuggestions(group);
@@ -720,9 +759,12 @@
 
     function formatDateHashtag(isoDate) {
       const parts = isoDate.split('-').map(Number);
-      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      const year = parts[0];
+      const month = parts[1];
+      const day = parts[2];
+      const d = new Date(year, month - 1, day);
       const weekday = weekdayGreek[d.getDay()];
-      return weekday + String(parts[2]).padStart(2, '0') + String(parts[1]).padStart(2, '0') + String(parts[0]);
+      return weekday + String(day).padStart(2, '0') + String(month).padStart(2, '0') + String(year);
     }
 
     function renderDates() {
@@ -763,6 +805,7 @@
         result.textContent = translations[lang].missingDate;
         return;
       }
+
       const rideTypes = rideTypeSelect.value.split(',').map(v => v.trim());
       const hashtags = [];
       rideTypes.forEach(type => hashtags.push('#' + type));
@@ -771,6 +814,7 @@
       selectedCities.destinations.forEach(city => hashtags.push('#' + normalizeHashtagText(city)));
       datesState.forEach(date => hashtags.push('#' + formatDateHashtag(date)));
       optional.forEach(tag => hashtags.push('#' + tag));
+
       const unique = [...new Set(hashtags)];
       const message = messageBox.value.trim();
       result.textContent = message ? unique.join(' ') + '\n\n' + message : unique.join(' ');
@@ -810,6 +854,7 @@
       document.getElementById('lang-el').classList.toggle('active', lang === 'el');
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
       const t = translations[lang];
+
       document.getElementById('title').textContent = t.title;
       document.getElementById('subtitle').textContent = t.subtitle;
       document.getElementById('top-note').textContent = t.topNote;
@@ -839,8 +884,12 @@
       messageBox.placeholder = t.messagePlaceholder;
       document.getElementById('petHashLabel').textContent = '#pet';
       document.getElementById('systematikaHashLabel').textContent = '#Συστηματικά';
+
       const rideOptions = lang === 'el' ? ['Αναζητώ', 'Προσφέρω', 'Και τα δύο'] : ['Looking for', 'Offering', 'Both'];
-      Array.from(rideTypeSelect.options).forEach((option, i) => { option.textContent = rideOptions[i]; });
+      Array.from(rideTypeSelect.options).forEach((option, i) => {
+        option.textContent = rideOptions[i];
+      });
+
       Object.keys(cityFields).forEach(group => hideSuggestions(group));
       if (!result.textContent.trim() || result.textContent === translations.el.noResult || result.textContent === translations.en.noResult) {
         result.textContent = t.noResult;
@@ -850,14 +899,20 @@
     document.getElementById('lang-el').addEventListener('click', () => setLanguage('el'));
     document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
     document.getElementById('addDateBtn').addEventListener('click', addDate);
-    document.getElementById('clearDatesBtn').addEventListener('click', () => { datesState.length = 0; renderDates(); });
+    dateInput.addEventListener('change', addDate);
+    document.getElementById('clearDatesBtn').addEventListener('click', () => {
+      datesState.length = 0;
+      renderDates();
+    });
     document.getElementById('generateBtn').addEventListener('click', generateHashtags);
     document.getElementById('copyBtn').addEventListener('click', copyResult);
     document.getElementById('clearAllBtn').addEventListener('click', clearAll);
 
     Object.entries(cityFields).forEach(([group, field]) => {
       field.input.addEventListener('input', () => renderSuggestions(group, field.input.value));
-      field.input.addEventListener('focus', () => { if (field.input.value.trim()) renderSuggestions(group, field.input.value); });
+      field.input.addEventListener('focus', () => {
+        if (field.input.value.trim()) renderSuggestions(group, field.input.value);
+      });
       field.input.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
@@ -865,12 +920,16 @@
           if (matches.length) addMatchedCity(group, matches[0]);
         }
       });
-      field.input.addEventListener('blur', () => { setTimeout(() => hideSuggestions(group), 120); });
+      field.input.addEventListener('blur', () => {
+        setTimeout(() => hideSuggestions(group), 120);
+      });
     });
 
     document.addEventListener('click', (event) => {
       Object.entries(cityFields).forEach(([group, field]) => {
-        if (!field.input.contains(event.target) && !field.suggestions.contains(event.target)) hideSuggestions(group);
+        if (!field.input.contains(event.target) && !field.suggestions.contains(event.target)) {
+          hideSuggestions(group);
+        }
       });
     });
 
