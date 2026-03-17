@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="el">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Share the Ride – Hashtag Generator</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Share the Ride – Hashtag Generator</title>
+<style>
     :root {
       --bg: #fff7d6;
       --card: #fffdf4;
@@ -27,9 +28,9 @@
       color: var(--text);
     }
     .wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 56px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
-    .hero { padding: 28px 24px 20px; background: linear-gradient(135deg, #fff6c8 0%, #fffdf2 55%, #fff2a8 100%); border-bottom: 1px solid var(--border); }
-    h1 { margin: 0 0 8px; font-size: 1.9rem; line-height: 1.15; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 28px; box-shadow: 0 18px 40px rgba(145, 108, 0, 0.10); overflow: hidden; }
+    .hero { padding: 32px 28px 22px; background: linear-gradient(135deg, #fff9dc 0%, #fffdf6 55%, #fff3ba 100%); border-bottom: 1px solid var(--border); }
+    h1 { margin: 0 0 8px; font-size: 1.95rem; line-height: 1.1; letter-spacing: -0.02em; }
     .sub { margin: 0; color: var(--muted); line-height: 1.5; max-width: 860px; }
     .group-link { margin-top: 10px; }
     .group-link a { color: var(--primary-strong); font-weight: 800; text-decoration: none; overflow-wrap: anywhere; word-break: break-word; }
@@ -45,15 +46,15 @@
       text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     }
     .lang-switch button.active { background: var(--primary); color: #2b2b2b; }
-    .content { padding: 24px; display: grid; gap: 20px; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
+    .content { padding: 28px; display: grid; gap: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
     .full { grid-column: 1 / -1; }
     .field { display: grid; gap: 8px; }
     label { font-weight: 800; font-size: 0.97rem; }
     .hint, .footer-note { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
     .footer-note a { color: var(--primary-strong); font-weight: 700; }
     input, select, textarea {
-      width: 100%; border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px;
+      width: 100%; border: 1px solid var(--border); border-radius: 16px; padding: 13px 14px;
       font: inherit; color: var(--text); background: #fffdf7;
     }
     input:focus, select:focus, textarea:focus { outline: 2px solid rgba(244,196,0,0.35); border-color: var(--primary-strong); }
@@ -75,14 +76,14 @@
     .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: var(--chip); border: 1px solid var(--border); font-size: 0.95rem; font-weight: 600; }
     .chip button { border: 0; background: transparent; color: var(--danger); cursor: pointer; font-weight: 800; padding: 0; line-height: 1; font-size: 1rem; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    button.primary, button.secondary { border-radius: 14px; padding: 13px 18px; font: inherit; font-weight: 700; cursor: pointer; }
-    button.primary { border: 1px solid var(--primary-strong); background: var(--primary); color: #2b2b2b; }
-    button.secondary { background: var(--soft); color: #5c4700; border: 1px solid var(--border); }
-    .tag-box { min-height: 182px; border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: #fffdf7; display: grid; gap: 12px; align-content: start; }
+    button.primary, button.secondary { border-radius: 16px; padding: 13px 18px; font: inherit; font-weight: 700; cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease; }
+    button.primary { border: 1px solid var(--primary-strong); background: var(--primary); color: #2b2b2b; box-shadow: 0 6px 16px rgba(201,151,0,0.18); }
+    button.secondary { background: #fffaf0; color: #5c4700; border: 1px solid var(--border); }
+    .tag-box { min-height: 182px; border: 1px solid var(--border); border-radius: 18px; padding: 16px; background: #fffefb; display: grid; gap: 12px; align-content: start; }
     .tag-option { display: flex; align-items: flex-start; gap: 10px; line-height: 1.35; font-size: 0.98rem; font-weight: 400; }
     .tag-option input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary-strong); }
     .tag-hash { font-weight: 600; }
-    .date-picker-box { border: 1px solid var(--border); border-radius: 18px; background: #fffdf7; padding: 10px; display: grid; gap: 8px; width: 100%; }
+    .date-picker-box { border: 1px solid var(--border); border-radius: 22px; background: #fffefb; padding: 12px; display: grid; gap: 8px; width: 100%; }
     .date-picker-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .date-nav { border: 1px solid var(--border); background: var(--soft); color: #5c4700; border-radius: 10px; width: 34px; height: 34px; font: inherit; font-weight: 800; cursor: pointer; padding: 0; }
     .date-month-label { font-weight: 800; text-align: center; flex: 1; font-size: 0.98rem; }
@@ -94,11 +95,13 @@
     .date-day:hover { background: #fff3bf; }
     .date-day:disabled { opacity: 0.35; cursor: not-allowed; }
     .date-day.selected { background: var(--primary); border-color: var(--primary-strong); font-weight: 800; }
-    .output { background: #fffdf7; border: 1px dashed var(--border); border-radius: 18px; padding: 18px; min-height: 140px; }
+    .output { background: #fffefb; border: 1px dashed var(--border); border-radius: 22px; padding: 20px; min-height: 140px; }
     .output-label { font-size: 0.92rem; font-weight: 800; margin-bottom: 10px; color: var(--muted); }
     #result { white-space: pre-wrap; line-height: 1.7; font-size: 1rem; word-break: break-word; }
     .success { color: var(--success); font-size: 0.92rem; font-weight: 700; min-height: 1.2em; }
-    @media (max-width: 760px) {
+    button.primary:hover, button.secondary:hover { transform: translateY(-1px); }
+.suggestion-item:hover { background: #fff6d6; }
+@media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.55rem; }
       .hero, .content { padding: 18px; }
@@ -109,102 +112,101 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="hero">
-        <h1 id="title"></h1>
-        <p class="sub" id="subtitle"></p>
-        <p class="sub group-link"><a id="groupLink" href="https://www.facebook.com/groups/sharetheride/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/groups/sharetheride/</a></p>
-        <div class="toolbar">
-          <div class="lang-switch" aria-label="Language switch">
-            <button id="lang-el" class="active" type="button"><span>🇬🇷</span><span>Ελληνικά</span></button>
-            <button id="lang-en" type="button"><span>🇬🇧</span><span>English</span></button>
-            <button id="lang-de" type="button"><span>🇩🇪</span><span>Deutsch</span></button>
-            <button id="lang-fr" type="button"><span>🇫🇷</span><span>Français</span></button>
-            <button id="lang-nl" type="button"><span>🇳🇱</span><span>Nederlands</span></button>
-            <button id="lang-it" type="button"><span>🇮🇹</span><span>Italiano</span></button>
-            <button id="lang-es" type="button"><span>🇪🇸</span><span>Español</span></button>
-            <button id="lang-pl" type="button"><span>🇵🇱</span><span>Polski</span></button>
-          </div>
-          <div class="footer-note" id="top-note"></div>
-          <div class="footer-note" id="missingCityNote"></div>
-        </div>
-      </div>
-      <div class="content">
-        <div class="grid">
-          <div class="field">
-            <label for="rideType" id="rideTypeLabel"></label>
-            <select id="rideType">
-              <option value="Αναζητώ">Αναζητώ</option>
-              <option value="Προσφέρω">Προσφέρω</option>
-              <option value="Αναζητώ,Προσφέρω">Και τα δύο</option>
-            </select>
-            <div class="hint" id="rideTypeHint"></div>
-            <label for="passengerCount" id="passengerLabel"></label>
-            <select id="passengerCount">
-              <option value="">—</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <div class="hint" id="passengerHint"></div>
-          </div>
-          <div class="field">
-            <label id="petTagLabel"></label>
-            <div class="tag-box">
-              <label class="tag-option" for="petOption"><input type="checkbox" id="petOption" value="pet" /><span><span class="tag-hash">#pet</span><br><span id="petHint"></span></span></label>
-              <label class="tag-option" for="systematikaOption"><input type="checkbox" id="systematikaOption" value="Συστηματικά" /><span><span class="tag-hash">#Συστηματικά</span><br><span id="systematikaHint"></span></span></label>
-            </div>
-            <div class="hint" id="petTagHint"></div>
-          </div>
-          <div class="field full">
-            <label for="originInput" id="originsLabel"></label>
-            <div class="search-row"><input id="originInput" autocomplete="off" /><div class="suggestions" id="originSuggestions"></div></div>
-            <div class="hint" id="originsHint"></div>
-            <div class="chips" id="originsChips"></div>
-          </div>
-          <div class="field full">
-            <label for="destinationInput" id="destinationsLabel"></label>
-            <div class="search-row"><input id="destinationInput" autocomplete="off" /><div class="suggestions" id="destinationSuggestions"></div></div>
-            <div class="hint" id="destinationsHint"></div>
-            <div class="chips" id="destinationsChips"></div>
-          </div>
-          <div class="field full">
-            <label for="stopsInput" id="stopsLabel"></label>
-            <div class="search-row"><input id="stopsInput" autocomplete="off" /><div class="suggestions" id="stopsSuggestions"></div></div>
-            <div class="hint" id="stopsHint"></div>
-            <div class="chips" id="stopsChips"></div>
-          </div>
-          <div class="field full">
-            <label id="datesLabel"></label>
-            <div class="date-picker-box">
-              <div class="date-picker-toolbar"><button class="date-nav" type="button" id="prevMonthBtn">‹</button><div class="date-month-label" id="dateMonthLabel"></div><button class="date-nav" type="button" id="nextMonthBtn">›</button></div>
-              <div class="date-weekdays" id="dateWeekdays"></div>
-              <div class="date-grid" id="dateGrid"></div>
-            </div>
-            <div class="actions"><button class="secondary" type="button" id="clearDatesBtn"></button></div>
-            <div class="hint" id="datesHint"></div>
-            <select id="dates" multiple></select>
-          </div>
-        </div>
-        <div class="field full">
-          <label for="messageBox" id="messageLabel"></label>
-          <textarea id="messageBox" rows="4"></textarea>
-          <div class="hint" id="messageHint"></div>
-        </div>
-        <div class="actions">
-          <button class="primary" type="button" id="generateBtn"></button>
-          <button class="secondary" type="button" id="copyBtn"></button>
-          <button class="secondary" type="button" id="clearAllBtn"></button>
-        </div>
-        <div class="output"><div class="output-label" id="outputLabel"></div><div id="result"></div></div>
-        <div class="success" id="successMsg"></div>
-        <div class="footer-note" id="footerNote"></div>
-      </div>
-    </div>
-  </div>
-  <script>
+<div class="wrap">
+<div class="card">
+<div class="hero">
+<h1 id="title"></h1>
+<p class="sub" id="subtitle"></p>
+<p class="sub group-link"><a href="https://www.facebook.com/groups/sharetheride/" id="groupLink" rel="noopener noreferrer" target="_blank">https://www.facebook.com/groups/sharetheride/</a></p>
+<div class="toolbar">
+<div aria-label="Language switch" class="lang-switch">
+<button class="active" id="lang-el" type="button"><span>🇬🇷</span><span>Ελληνικά</span></button>
+<button id="lang-en" type="button"><span>🇬🇧</span><span>English</span></button>
+<button id="lang-de" type="button"><span>🇩🇪</span><span>Deutsch</span></button>
+<button id="lang-fr" type="button"><span>🇫🇷</span><span>Français</span></button>
+<button id="lang-nl" type="button"><span>🇳🇱</span><span>Nederlands</span></button>
+<button id="lang-it" type="button"><span>🇮🇹</span><span>Italiano</span></button>
+<button id="lang-es" type="button"><span>🇪🇸</span><span>Español</span></button>
+<button id="lang-pl" type="button"><span>🇵🇱</span><span>Polski</span></button>
+</div>
+<div class="footer-note" id="top-note"></div>
+<div class="footer-note" id="missingCityNote"></div>
+</div>
+</div>
+<div class="content">
+<div class="grid">
+<div class="field">
+<label for="rideType" id="rideTypeLabel"></label>
+<select id="rideType">
+<option value="Αναζητώ">Αναζητώ</option>
+<option value="Προσφέρω">Προσφέρω</option>
+<option value="Αναζητώ,Προσφέρω">Και τα δύο</option>
+</select>
+<div class="hint" id="rideTypeHint"></div>
+<label for="passengerCount" id="passengerLabel"></label>
+<select id="passengerCount">
+<option value="">—</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+<div class="hint" id="passengerHint"></div>
+</div>
+<div class="field">
+<label id="petTagLabel"></label>
+<div class="tag-box">
+<label class="tag-option" for="petOption"><input id="petOption" type="checkbox" value="pet"/><span><span class="tag-hash">#pet</span><br/><span id="petHint"></span></span></label>
+<label class="tag-option" for="systematikaOption"><input id="systematikaOption" type="checkbox" value="Συστηματικά"/><span><span class="tag-hash">#Συστηματικά</span><br/><span id="systematikaHint"></span></span></label>
+</div>
+<div class="hint" id="petTagHint"></div>
+</div>
+<div class="field full">
+<label for="originInput" id="originsLabel"></label>
+<div class="search-row"><input autocomplete="off" id="originInput"/><div class="suggestions" id="originSuggestions"></div></div>
+<div class="hint" id="originsHint"></div>
+<div class="chips" id="originsChips"></div>
+</div>
+<div class="field full">
+<label for="destinationInput" id="destinationsLabel"></label>
+<div class="search-row"><input autocomplete="off" id="destinationInput"/><div class="suggestions" id="destinationSuggestions"></div></div>
+<div class="hint" id="destinationsHint"></div>
+<div class="chips" id="destinationsChips"></div>
+</div>
+<div class="field full">
+<label for="stopsInput" id="stopsLabel"></label>
+<div class="search-row"><input autocomplete="off" id="stopsInput"/><div class="suggestions" id="stopsSuggestions"></div></div>
+<div class="hint" id="stopsHint"></div>
+<div class="chips" id="stopsChips"></div>
+</div>
+<div class="field full">
+<label id="datesLabel"></label>
+<div class="date-picker-box">
+<div class="date-picker-toolbar"><button class="date-nav" id="prevMonthBtn" type="button">‹</button><div class="date-month-label" id="dateMonthLabel"></div><button class="date-nav" id="nextMonthBtn" type="button">›</button></div>
+<div class="date-weekdays" id="dateWeekdays"></div>
+<div class="date-grid" id="dateGrid"></div>
+</div>
+<div class="actions"><button class="secondary" id="clearDatesBtn" type="button"></button></div>
+<div class="hint" id="datesHint"></div>
+</div>
+</div>
+<div class="field full">
+<label for="messageBox" id="messageLabel"></label>
+<textarea id="messageBox" rows="4"></textarea>
+<div class="hint" id="messageHint"></div>
+</div>
+<div class="actions">
+<button class="primary" id="generateBtn" type="button"></button>
+<button class="secondary" id="copyBtn" type="button"></button>
+<button class="secondary" id="clearAllBtn" type="button"></button>
+<button class="secondary" id="openGroupBtn" type="button">🔗 Share the Ride FB Group</button></div>
+<div class="output"><div class="output-label" id="outputLabel"></div><div id="result"></div></div>
+<div class="success" id="successMsg"></div>
+<div class="footer-note" id="footerNote"></div>
+</div>
+</div>
+</div>
+<script>
     
 const translationsData = {
       el: { title:'Share the Ride – Δημιουργία Hashtags', subtitle:'Συμπλήρωσε τα στοιχεία της διαδρομής και δημιούργησε ένα έτοιμο post για αντιγραφή. Τα hashtags παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.', topNote:'Μπορείς να αναζητήσεις πόλεις με πληκτρολόγηση, να προσθέσεις ενδιάμεσους σταθμούς και πολλές ημερομηνίες.', missingCityNote:'Αν η πόλη που ψάχνεις λείπει ή έχεις οποιοδήποτε άλλο feedback που θα μπορούσε να βοηθήσει να βελτιωθεί το εργαλείο, στείλε μήνυμα στη <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>. Το feedback σου είναι πολύτιμο για εμάς.', rideTypeLabel:'Τύπος ανάρτησης', rideTypeHint:'Επίλεξε αν ψάχνεις ή προσφέρεις διαδρομή.', passengerLabel:'Άτομα / θέσεις', passengerHint:'Προαιρετικό. Αν επιλεγεί, θα εμφανιστεί ως 👤 και ο αριθμός στο τελικό αποτέλεσμα.', petTagLabel:'Προαιρετικές ετικέτες', petTagHint:'Πάτησε πάνω στο κουτάκι για να προσθέσεις την αντίστοιχη ετικέτα στο τελικό κείμενο.', systematikaHint:'Το #Συστηματικά χρησιμοποιείται όταν η διαδρομή γίνεται επαναλαμβανόμενα.', petHint:'Το #pet μπορεί να χρησιμοποιηθεί όταν η ανάρτηση αφορά μεταφορά κατοικιδίου.', originsLabel:'Πόλη εκκίνησης', originsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα.', destinationsLabel:'Τελικός προορισμός', destinationsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα.', stopsLabel:'Ενδιάμεσοι σταθμοί', stopsHint:'Πρόσθεσε προαιρετικές ενδιάμεσες στάσεις. Θα μπουν μετά τον τελικό προορισμό.', datesLabel:'Ημερομηνίες διαδρομής', datesHint:'Οι παλαιότερες ημερομηνίες είναι απενεργοποιημένες.', clearDatesBtn:'Καθαρισμός ημερομηνιών', generateBtn:'Δημιουργία hashtags', copyBtn:'Αντιγραφή', clearAllBtn:'Καθαρισμός όλων', outputLabel:'Έτοιμο post', footerNote:'Σημείωση: τα hashtags δημιουργούνται πάντα στα Ελληνικά.', messageLabel:'Μήνυμα για την ανάρτηση', messageHint:'Το μήνυμα αυτό θα προστεθεί κάτω από τα hashtags.', messagePlaceholder:'Γράψε εδώ το μήνυμα που θέλεις να εμφανίζεται κάτω από τα hashtags όταν κάνεις copy.', noResult:'Εδώ θα εμφανιστεί το έτοιμο post.', missingOrigin:'Διάλεξε τουλάχιστον μία πόλη εκκίνησης.', missingDestination:'Διάλεξε τουλάχιστον μία πόλη προορισμού.', missingDate:'Πρόσθεσε τουλάχιστον μία ημερομηνία ή χρησιμοποίησε το #Συστηματικά.', copied:'Το κείμενο αντιγράφηκε.', parentAuto:'Το βασικό hashtag προστίθεται αυτόματα.', weekdays:['Δε','Τρ','Τε','Πε','Πα','Σα','Κυ'], months:['Ιανουάριος','Φεβρουάριος','Μάρτιος','Απρίλιος','Μάιος','Ιούνιος','Ιούλιος','Αύγουστος','Σεπτέμβριος','Οκτώβριος','Νοέμβριος','Δεκέμβριος'] },
@@ -231,7 +233,7 @@ const translationsData = {
     };
     const cityOptions = [];
   </script>
-  <script>
+<script>
     // keep the dataset from fixed-6 concise here by reusing the visible page's current city list manually as needed
     const baseCities = [
       { el:'Αθήνα', en:'Athens' }, { el:'Θεσσαλονίκη', en:'Thessaloniki' }, { el:'Πάτρα', en:'Patras' }, { el:'Ηράκλειο', en:'Heraklion' }, { el:'Λάρισα', en:'Larisa' }, { el:'Βόλος', en:'Volos' }, { el:'Ιωάννινα', en:'Ioannina' }, { el:'Ηγουμενίτσα', en:'Igoumenitsa' }, { el:'Κέρκυρα', en:'Corfu' }, { el:'Κατερίνη', en:'Katerini' }, { el:'Λαμία', en:'Lamia' }, { el:'Πειραιάς', en:'Piraeus' }, { el:'Χαλκίδα', en:'Chalkida' }, { el:'Χανιά', en:'Chania' }, { el:'Ρέθυμνο', en:'Rethymno' }, { el:'Ρόδος', en:'Rhodes' }, { el:'Τρίκαλα', en:'Trikala' }, { el:'Κοζάνη', en:'Kozani' }, { el:'Σέρρες', en:'Serres' }, { el:'Κόρινθος', en:'Corinth' }, { el:'Καλαμάτα', en:'Kalamata' }, { el:'Ναύπλιο', en:'Nafplio' }, { el:'Αλεξανδρούπολη', en:'Alexandroupoli' }, { el:'Καστοριά', en:'Kastoria' }, { el:'Φλώρινα', en:'Florina' }, { el:'Ξάνθη', en:'Xanthi' }, { el:'Καβάλα', en:'Kavala' }, { el:'Δράμα', en:'Drama' }, { el:'Λευκάδα', en:'Lefkada' }, { el:'Ζάκυνθος', en:'Zakynthos' },
@@ -255,7 +257,6 @@ const translationsData = {
     const passengerCountSelect = document.getElementById('passengerCount');
     const petOption = document.getElementById('petOption');
     const systematikaOption = document.getElementById('systematikaOption');
-    const datesSelect = document.getElementById('dates');
     const dateGrid = document.getElementById('dateGrid');
     const dateMonthLabel = document.getElementById('dateMonthLabel');
     const dateWeekdays = document.getElementById('dateWeekdays');
@@ -280,15 +281,15 @@ const translationsData = {
     function getOptionalTags(){ const tags=[]; if(petOption.checked) tags.push('pet'); if(systematikaOption.checked) tags.push('Συστηματικά'); return tags; }
     function formatDateHashtag(isoDate){ const [year,month,day]=isoDate.split('-').map(Number); const d=new Date(year,month-1,day); const weekday=weekdayGreek[d.getDay()]; return weekday + String(day).padStart(2,'0') + String(month).padStart(2,'0') + String(year); }
     function formatIsoDate(year,monthIndex,day){ return `${year}-${String(monthIndex+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`; }
-    function renderDates(){ datesSelect.innerHTML=''; datesState.forEach(v=>{ const option=document.createElement('option'); option.value=v; option.textContent='#'+formatDateHashtag(v); option.selected=true; datesSelect.appendChild(option); }); }
+    function renderDates(){  datesState.forEach(v=>{ const option=document.createElement('option'); option.value=v; option.textContent='#'+formatDateHashtag(v); option.selected=true;  }); }
     function toggleDate(isoDate){ if(isoDate < todayIso) return; const idx=datesState.indexOf(isoDate); if(idx===-1){ datesState.push(isoDate); datesState.sort(); } else { datesState.splice(idx,1); } renderDates(); renderCalendar(); successMsg.textContent=''; }
     function renderCalendar(){ const t=translationsData[lang] || fallback; dateMonthLabel.textContent=`${t.months[calendarViewDate.getMonth()]} ${calendarViewDate.getFullYear()}`; dateWeekdays.innerHTML=t.weekdays.map(d=>`<div>${d}</div>`).join(''); const year=calendarViewDate.getFullYear(); const monthIndex=calendarViewDate.getMonth(); const firstDay=new Date(year,monthIndex,1); const startOffset=(firstDay.getDay()+6)%7; const daysInMonth=new Date(year,monthIndex+1,0).getDate(); dateGrid.innerHTML=''; for(let i=0;i<startOffset;i++){ const e=document.createElement('div'); e.className='date-empty'; dateGrid.appendChild(e); } for(let day=1;day<=daysInMonth;day++){ const isoDate=formatIsoDate(year,monthIndex,day); const isPast=isoDate < todayIso; const btn=document.createElement('button'); btn.type='button'; btn.className='date-day'+(datesState.includes(isoDate)?' selected':''); btn.textContent=String(day); if(isPast) btn.disabled=true; else btn.addEventListener('click',()=>toggleDate(isoDate)); dateGrid.appendChild(btn); } }
-    function generateHashtags(){ successMsg.textContent=''; const optional=getOptionalTags(); if(!selectedCities.origins.length){ result.textContent=translationsData[lang].missingOrigin; return; } if(!selectedCities.destinations.length){ result.textContent=translationsData[lang].missingDestination; return; } if(!datesState.length && !optional.includes('Συστηματικά')){ result.textContent=translationsData[lang].missingDate; return; } const rideTypes=rideTypeSelect.value.split(',').map(v=>v.trim()); let line1=''; if(rideTypes.length===2){ line1=`🚗 #${rideTypes[1]} / 🔍 #${rideTypes[0]}`; } else if(rideTypes[0]==='Προσφέρω'){ line1=`🚗 #${rideTypes[0]}`; } else { line1=`🔍 #${rideTypes[0]}`; } if(passengerCountSelect.value) line1 += ` 👤${passengerCountSelect.value}`; let line2='🛫 '; selectedCities.origins.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); line2 += '🛬 '; selectedCities.destinations.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); let line3=''; if(selectedCities.stops.length){ line3='(🔁 '; selectedCities.stops.forEach(city=>line3 += `#${normalizeHashtagText(city)} `); line3 += ')'; } let line4=''; datesState.forEach(date=>line4 += `#${formatDateHashtag(date)} `); optional.forEach(tag=>line4 += `#${tag} `); let finalText = line1.trim() + '\n' + line2.trim(); if(line3.trim()) finalText += '\n' + line3.trim(); if(line4.trim()) finalText += '\n' + line4.trim(); const message=messageBox.value.trim(); if(message) finalText += '\n\n' + message; result.textContent=finalText; }
+    function generateHashtags(){ successMsg.textContent=''; const optional=getOptionalTags(); if(!selectedCities.origins.length){ result.textContent=translationsData[lang].missingOrigin; return; } if(!selectedCities.destinations.length){ result.textContent=translationsData[lang].missingDestination; return; } if(!datesState.length && !optional.includes('Συστηματικά')){ result.textContent=translationsData[lang].missingDate; return; } const rideTypes=rideTypeSelect.value.split(',').map(v=>v.trim()); let line1=''; if(rideTypes.length===2){ line1=`🚗 #${rideTypes[1]} / 🔍 #${rideTypes[0]}`; } else if(rideTypes[0]==='Προσφέρω'){ line1=`🚗 #${rideTypes[0]}`; } else { line1=`🔍 #${rideTypes[0]}`; } if(passengerCountSelect.value) line1 += ` 👤${passengerCountSelect.value}`; let line2='📍 '; selectedCities.origins.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); line2 += '➜ '; selectedCities.destinations.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); let line3=''; if(selectedCities.stops.length){ line3='🔀 '; selectedCities.stops.forEach(city=>line3 += `#${normalizeHashtagText(city)} `);  } let line4='📅 '; datesState.forEach(date=>line4 += `#${formatDateHashtag(date)} `); optional.forEach(tag=>line4 += `#${tag} `); let finalText = line1.trim() + '\n' + line2.trim(); if(line3.trim()) finalText += '\n' + line3.trim(); if(line4.trim()) finalText += '\n' + line4.trim(); const message=messageBox.value.trim(); if(message) finalText += '\n\n' + message; result.textContent=finalText; }
     async function copyResult(){ const text=result.textContent.trim(); if(!text || Object.values(translationsData).some(tr=>text===tr.noResult)) return; try{ await navigator.clipboard.writeText(text); successMsg.textContent=translationsData[lang].copied; }catch{ successMsg.textContent='Copy failed.'; } }
     function clearAll(){ rideTypeSelect.selectedIndex=0; passengerCountSelect.selectedIndex=0; petOption.checked=false; systematikaOption.checked=false; Object.keys(selectedCities).forEach(group=>{ selectedCities[group]=[]; renderCityChips(group); cityFields[group].input.value=''; hideSuggestions(group); }); datesState.length=0; renderDates(); renderCalendar(); messageBox.value=''; successMsg.textContent=''; result.textContent=translationsData[lang].noResult; }
-    function setLanguage(newLang){ lang=newLang; ['el','en','de','fr','nl','it','es','pl'].forEach(code=>{ const btn=document.getElementById('lang-'+code); if(btn) btn.classList.toggle('active', lang===code); }); const t=translationsData[lang] || fallback; document.getElementById('title').textContent=t.title; document.getElementById('subtitle').textContent=t.subtitle; document.getElementById('top-note').textContent=t.topNote; document.getElementById('missingCityNote').innerHTML=t.missingCityNote; document.getElementById('rideTypeLabel').textContent=t.rideTypeLabel; document.getElementById('rideTypeHint').textContent=t.rideTypeHint; document.getElementById('passengerLabel').textContent=t.passengerLabel; document.getElementById('passengerHint').textContent=passengerHints[lang] || passengerHints.en; document.getElementById('petTagLabel').textContent=t.petTagLabel; document.getElementById('petTagHint').textContent=t.petTagHint; document.getElementById('systematikaHint').textContent=t.systematikaHint; document.getElementById('petHint').textContent=t.petHint; document.getElementById('originsLabel').textContent=t.originsLabel; document.getElementById('originsHint').textContent=t.originsHint; document.getElementById('destinationsLabel').textContent=t.destinationsLabel; document.getElementById('destinationsHint').textContent=t.destinationsHint; document.getElementById('stopsLabel').textContent=t.stopsLabel; document.getElementById('stopsHint').textContent=t.stopsHint; document.getElementById('datesLabel').textContent=t.datesLabel; document.getElementById('datesHint').textContent=t.datesHint; document.getElementById('clearDatesBtn').textContent=t.clearDatesBtn; document.getElementById('generateBtn').textContent=t.generateBtn; document.getElementById('copyBtn').textContent=t.copyBtn; document.getElementById('clearAllBtn').textContent=t.clearAllBtn; document.getElementById('outputLabel').textContent=t.outputLabel; document.getElementById('footerNote').textContent=t.footerNote; document.getElementById('messageLabel').textContent=t.messageLabel; document.getElementById('messageHint').textContent=t.messageHint; messageBox.placeholder=t.messagePlaceholder; const rideOptions=rideOptionsByLang[lang] || rideOptionsByLang.en; Array.from(rideTypeSelect.options).forEach((opt,i)=> opt.textContent = rideOptions[i]); renderCalendar(); if(!result.textContent.trim() || Object.values(translationsData).some(tr=>result.textContent===tr.noResult)){ result.textContent=t.noResult; } }
+    function setLanguage(newLang){ lang=newLang; ['el','en','de','fr','nl','it','es','pl'].forEach(code=>{ const btn=document.getElementById('lang-'+code); if(btn) btn.classList.toggle('active', lang===code); }); const t=translationsData[lang] || fallback; document.getElementById('title').textContent=t.title; document.getElementById('subtitle').textContent=t.subtitle; document.getElementById('top-note').textContent=t.topNote; document.getElementById('missingCityNote').innerHTML=t.missingCityNote; document.getElementById('rideTypeLabel').textContent=t.rideTypeLabel; document.getElementById('rideTypeHint').textContent=t.rideTypeHint; document.getElementById('passengerLabel').textContent=t.passengerLabel; document.getElementById('passengerHint').textContent=passengerHints[lang] || passengerHints.en; document.getElementById('petTagLabel').textContent=t.petTagLabel; document.getElementById('petTagHint').textContent=t.petTagHint; document.getElementById('systematikaHint').textContent=t.systematikaHint; document.getElementById('petHint').textContent=t.petHint; document.getElementById('originsLabel').textContent=t.originsLabel; document.getElementById('originsHint').textContent=t.originsHint; document.getElementById('destinationsLabel').textContent=t.destinationsLabel; document.getElementById('destinationsHint').textContent=t.destinationsHint; document.getElementById('stopsLabel').textContent=t.stopsLabel; document.getElementById('stopsHint').textContent=t.stopsHint; document.getElementById('datesLabel').textContent=t.datesLabel; document.getElementById('datesHint').textContent=t.datesHint; document.getElementById('clearDatesBtn').textContent=t.clearDatesBtn; document.getElementById('generateBtn').textContent=t.generateBtn; document.getElementById('copyBtn').textContent=t.copyBtn; document.getElementById('openGroupBtn').textContent=t.openGroupBtn || '🔗 Share the Ride FB group'; document.getElementById('clearAllBtn').textContent=t.clearAllBtn; document.getElementById('outputLabel').textContent=t.outputLabel; document.getElementById('footerNote').textContent=t.footerNote; document.getElementById('messageLabel').textContent=t.messageLabel; document.getElementById('messageHint').textContent=t.messageHint; messageBox.placeholder=t.messagePlaceholder; const rideOptions=rideOptionsByLang[lang] || rideOptionsByLang.en; Array.from(rideTypeSelect.options).forEach((opt,i)=> opt.textContent = rideOptions[i]); renderCalendar(); if(!result.textContent.trim() || Object.values(translationsData).some(tr=>result.textContent===tr.noResult)){ result.textContent=t.noResult; } }
     document.getElementById('lang-el').addEventListener('click',()=>setLanguage('el')); document.getElementById('lang-en').addEventListener('click',()=>setLanguage('en')); document.getElementById('lang-de').addEventListener('click',()=>setLanguage('de')); document.getElementById('lang-fr').addEventListener('click',()=>setLanguage('fr')); document.getElementById('lang-nl').addEventListener('click',()=>setLanguage('nl')); document.getElementById('lang-it').addEventListener('click',()=>setLanguage('it')); document.getElementById('lang-es').addEventListener('click',()=>setLanguage('es')); document.getElementById('lang-pl').addEventListener('click',()=>setLanguage('pl'));
-    document.getElementById('clearDatesBtn').addEventListener('click',()=>{ datesState.length=0; renderDates(); renderCalendar(); }); document.getElementById('generateBtn').addEventListener('click',generateHashtags); document.getElementById('copyBtn').addEventListener('click',copyResult); document.getElementById('clearAllBtn').addEventListener('click',clearAll);
+    document.getElementById('clearDatesBtn').addEventListener('click',()=>{ datesState.length=0; renderDates(); renderCalendar(); }); document.getElementById('generateBtn').addEventListener('click',generateHashtags); document.getElementById('copyBtn').addEventListener('click',copyResult); document.getElementById('openGroupBtn').addEventListener('click',()=>window.open('https://www.facebook.com/groups/sharetheride/','_blank')); document.getElementById('clearAllBtn').addEventListener('click',clearAll);
     prevMonthBtn.addEventListener('click',()=>{ calendarViewDate=new Date(calendarViewDate.getFullYear(),calendarViewDate.getMonth()-1,1); renderCalendar(); }); nextMonthBtn.addEventListener('click',()=>{ calendarViewDate=new Date(calendarViewDate.getFullYear(),calendarViewDate.getMonth()+1,1); renderCalendar(); });
     Object.entries(cityFields).forEach(([group,field])=>{ field.input.addEventListener('input',()=>renderSuggestions(group,field.input.value)); field.input.addEventListener('focus',()=>renderSuggestions(group,field.input.value)); field.input.addEventListener('keydown',(event)=>{ if(event.key==='Enter'){ event.preventDefault(); const matches=getFilteredCities(field.input.value); if(matches.length) addMatchedCity(group,matches[0]); } }); field.input.addEventListener('blur',()=>setTimeout(()=>hideSuggestions(group),120)); });
     document.addEventListener('click',(event)=>{ Object.entries(cityFields).forEach(([group,field])=>{ if(!field.input.contains(event.target) && !field.suggestions.contains(event.target)) hideSuggestions(group); }); });
