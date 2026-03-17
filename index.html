@@ -12,7 +12,6 @@
       --muted: #6b6b6b;
       --border: #efd86d;
       --primary: #f4c400;
-      --primary-hover: #e0b300;
       --primary-strong: #c99700;
       --soft: #fff5cc;
       --success: #1f7a3d;
@@ -20,7 +19,6 @@
       --chip: #fff0a6;
       --shadow: 0 12px 30px rgba(145, 108, 0, 0.12);
     }
-
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -28,7 +26,6 @@
       background: linear-gradient(180deg, var(--bg) 0%, #fff9e8 100%);
       color: var(--text);
     }
-
     .wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 56px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
     .hero { padding: 28px 24px 20px; background: linear-gradient(135deg, #fff6c8 0%, #fffdf2 55%, #fff2a8 100%); border-bottom: 1px solid var(--border); }
@@ -37,36 +34,17 @@
     .group-link { margin-top: 10px; }
     .group-link a { color: var(--primary-strong); font-weight: 800; text-decoration: none; overflow-wrap: anywhere; word-break: break-word; }
     .toolbar { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 18px; }
-
     .lang-switch {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 100%;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--border);
-      padding: 4px;
-      border-radius: 20px;
-      gap: 4px;
+      display: flex; flex-wrap: wrap; width: 100%; max-width: 100%;
+      background: rgba(255,255,255,0.75); border: 1px solid var(--border);
+      padding: 4px; border-radius: 20px; gap: 4px;
     }
     .lang-switch button {
-      border: 0;
-      background: transparent;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--muted);
-      flex: 1 1 calc(25% - 4px);
-      min-width: 150px;
-      text-align: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      border: 0; background: transparent; padding: 10px 14px; border-radius: 999px; cursor: pointer;
+      font-weight: 700; color: var(--muted); flex: 1 1 calc(25% - 4px); min-width: 150px;
+      text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     }
     .lang-switch button.active { background: var(--primary); color: #2b2b2b; }
-
     .content { padding: 24px; display: grid; gap: 20px; }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
     .full { grid-column: 1 / -1; }
@@ -74,58 +52,36 @@
     label { font-weight: 800; font-size: 0.97rem; }
     .hint, .footer-note { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
     .footer-note a { color: var(--primary-strong); font-weight: 700; }
-
     input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 13px 14px;
-      font: inherit;
-      color: var(--text);
-      background: #fffdf7;
+      width: 100%; border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px;
+      font: inherit; color: var(--text); background: #fffdf7;
     }
-    input:focus, select:focus, textarea:focus { outline: 2px solid rgba(244, 196, 0, 0.35); border-color: var(--primary-strong); }
+    input:focus, select:focus, textarea:focus { outline: 2px solid rgba(244,196,0,0.35); border-color: var(--primary-strong); }
     select[multiple] { min-height: 90px; padding: 10px; }
     textarea { resize: vertical; min-height: 110px; }
-
     .search-row { position: relative; }
     .suggestions {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      right: 0;
-      background: #fffdf7;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 10px 24px rgba(145, 108, 0, 0.14);
-      max-height: 260px;
-      overflow-y: auto;
-      z-index: 20;
-      display: none;
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fffdf7;
+      border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 10px 24px rgba(145,108,0,0.14);
+      max-height: 260px; overflow-y: auto; z-index: 20; display: none;
     }
     .suggestions.visible { display: block; }
-    .suggestion-item { padding: 12px 14px; cursor: pointer; border-bottom: 1px solid rgba(239,216,109,0.45); background: #fffdf7; }
+    .suggestion-item { padding: 12px 14px; cursor: pointer; border-bottom: 1px solid rgba(239,216,109,0.45); }
     .suggestion-item:last-child { border-bottom: 0; }
     .suggestion-item:hover { background: #fff3bf; }
     .suggestion-main { font-weight: 600; }
     .suggestion-sub { color: var(--muted); font-size: 0.88rem; margin-top: 2px; }
-
     .chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 12px; }
     .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: var(--chip); border: 1px solid var(--border); font-size: 0.95rem; font-weight: 600; }
     .chip button { border: 0; background: transparent; color: var(--danger); cursor: pointer; font-weight: 800; padding: 0; line-height: 1; font-size: 1rem; }
-
     .actions { display: flex; flex-wrap: wrap; gap: 12px; }
     button.primary, button.secondary { border-radius: 14px; padding: 13px 18px; font: inherit; font-weight: 700; cursor: pointer; }
     button.primary { border: 1px solid var(--primary-strong); background: var(--primary); color: #2b2b2b; }
     button.secondary { background: var(--soft); color: #5c4700; border: 1px solid var(--border); }
-
     .tag-box { min-height: 182px; border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: #fffdf7; display: grid; gap: 12px; align-content: start; }
     .tag-option { display: flex; align-items: flex-start; gap: 10px; line-height: 1.35; font-size: 0.98rem; font-weight: 400; }
     .tag-option input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary-strong); }
     .tag-hash { font-weight: 600; }
-
-    .helper-preview { color: var(--muted); font-size: 0.92rem; line-height: 1.5; background: #fff9e8; border: 1px dashed var(--border); border-radius: 14px; padding: 12px 14px; }
-
     .date-picker-box { border: 1px solid var(--border); border-radius: 18px; background: #fffdf7; padding: 10px; display: grid; gap: 8px; width: 100%; }
     .date-picker-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .date-nav { border: 1px solid var(--border); background: var(--soft); color: #5c4700; border-radius: 10px; width: 34px; height: 34px; font: inherit; font-weight: 800; cursor: pointer; padding: 0; }
@@ -138,12 +94,10 @@
     .date-day:hover { background: #fff3bf; }
     .date-day:disabled { opacity: 0.35; cursor: not-allowed; }
     .date-day.selected { background: var(--primary); border-color: var(--primary-strong); font-weight: 800; }
-
     .output { background: #fffdf7; border: 1px dashed var(--border); border-radius: 18px; padding: 18px; min-height: 140px; }
     .output-label { font-size: 0.92rem; font-weight: 800; margin-bottom: 10px; color: var(--muted); }
     #result { white-space: pre-wrap; line-height: 1.7; font-size: 1rem; word-break: break-word; }
     .success { color: var(--success); font-size: 0.92rem; font-weight: 700; min-height: 1.2em; }
-
     @media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.55rem; }
@@ -152,17 +106,14 @@
       .date-day, .date-empty { height: 40px; }
       .date-weekdays, .date-grid { grid-auto-rows: 40px; }
     }
-  .route-preview{display:none !important;}
-#routePreview{display:none !important;}
-.helper-preview{display:none !important;}
-</style>
+  </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
       <div class="hero">
-        <h1 id="title">Share the Ride – Δημιουργία Hashtags</h1>
-        <p class="sub" id="subtitle">Συμπλήρωσε τα στοιχεία της διαδρομής και πάτησε το κουμπί για να δημιουργήσεις έτοιμα hashtags για την ανάρτησή σου. Οι ετικέτες παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.</p>
+        <h1 id="title"></h1>
+        <p class="sub" id="subtitle"></p>
         <p class="sub group-link"><a id="groupLink" href="https://www.facebook.com/groups/sharetheride/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/groups/sharetheride/</a></p>
         <div class="toolbar">
           <div class="lang-switch" aria-label="Language switch">
@@ -179,7 +130,6 @@
           <div class="footer-note" id="missingCityNote"></div>
         </div>
       </div>
-
       <div class="content">
         <div class="grid">
           <div class="field">
@@ -190,39 +140,42 @@
               <option value="Αναζητώ,Προσφέρω">Και τα δύο</option>
             </select>
             <div class="hint" id="rideTypeHint"></div>
+            <label for="passengerCount" id="passengerLabel"></label>
+            <select id="passengerCount">
+              <option value="">—</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <div class="hint" id="passengerHint"></div>
           </div>
-
           <div class="field">
             <label id="petTagLabel"></label>
             <div class="tag-box">
-              <label class="tag-option" for="petOption"><input type="checkbox" id="petOption" value="pet" /><span><span class="tag-hash" id="petHashLabel">#pet</span><br><span id="petHint"></span></span></label>
-              <label class="tag-option" for="systematikaOption"><input type="checkbox" id="systematikaOption" value="Συστηματικά" /><span><span class="tag-hash" id="systematikaHashLabel">#Συστηματικά</span><br><span id="systematikaHint"></span></span></label>
+              <label class="tag-option" for="petOption"><input type="checkbox" id="petOption" value="pet" /><span><span class="tag-hash">#pet</span><br><span id="petHint"></span></span></label>
+              <label class="tag-option" for="systematikaOption"><input type="checkbox" id="systematikaOption" value="Συστηματικά" /><span><span class="tag-hash">#Συστηματικά</span><br><span id="systematikaHint"></span></span></label>
             </div>
             <div class="hint" id="petTagHint"></div>
           </div>
-
           <div class="field full">
             <label for="originInput" id="originsLabel"></label>
             <div class="search-row"><input id="originInput" autocomplete="off" /><div class="suggestions" id="originSuggestions"></div></div>
             <div class="hint" id="originsHint"></div>
             <div class="chips" id="originsChips"></div>
           </div>
-
           <div class="field full">
             <label for="destinationInput" id="destinationsLabel"></label>
             <div class="search-row"><input id="destinationInput" autocomplete="off" /><div class="suggestions" id="destinationSuggestions"></div></div>
             <div class="hint" id="destinationsHint"></div>
             <div class="chips" id="destinationsChips"></div>
-            <div class="helper-preview" id="routePreview"></div>
           </div>
-
           <div class="field full">
             <label for="stopsInput" id="stopsLabel"></label>
             <div class="search-row"><input id="stopsInput" autocomplete="off" /><div class="suggestions" id="stopsSuggestions"></div></div>
             <div class="hint" id="stopsHint"></div>
             <div class="chips" id="stopsChips"></div>
           </div>
-
           <div class="field full">
             <label id="datesLabel"></label>
             <div class="date-picker-box">
@@ -235,75 +188,64 @@
             <select id="dates" multiple></select>
           </div>
         </div>
-
         <div class="field full">
           <label for="messageBox" id="messageLabel"></label>
           <textarea id="messageBox" rows="4"></textarea>
           <div class="hint" id="messageHint"></div>
         </div>
-
         <div class="actions">
           <button class="primary" type="button" id="generateBtn"></button>
           <button class="secondary" type="button" id="copyBtn"></button>
           <button class="secondary" type="button" id="clearAllBtn"></button>
         </div>
-
         <div class="output"><div class="output-label" id="outputLabel"></div><div id="result"></div></div>
         <div class="success" id="successMsg"></div>
         <div class="footer-note" id="footerNote"></div>
       </div>
     </div>
   </div>
-
   <script>
-    const cityOptions = [
-      { el: 'Αθήνα', en: 'Athens', de: 'Athen', fr: 'Athènes', nl: 'Athene' },
-      { el: 'Θεσσαλονίκη', en: 'Thessaloniki', de: 'Thessaloniki', fr: 'Thessalonique', nl: 'Thessaloniki' },
-      { el: 'Πάτρα', en: 'Patras' }, { el: 'Ηράκλειο', en: 'Heraklion' }, { el: 'Λάρισα', en: 'Larisa' }, { el: 'Αγρίνιο', en: 'Agrinio' }, { el: 'Αλεξανδρούπολη', en: 'Alexandroupoli' }, { el: 'Αμαλιάδα', en: 'Amaliada' }, { el: 'Άργος', en: 'Argos' }, { el: 'Άρτα', en: 'Arta' }, { el: 'Ασπρόπυργος', en: 'Aspropyrgos' }, { el: 'Βέροια', en: 'Veria' }, { el: 'Βόλος', en: 'Volos' }, { el: 'Ιωάννινα', en: 'Ioannina' }, { el: 'Γιαννιτσά', en: 'Giannitsa' }, { el: 'Γρεβενά', en: 'Grevena' }, { el: 'Διδυμότειχο', en: 'Didymoteicho' }, { el: 'Δράμα', en: 'Drama' }, { el: 'Έδεσσα', en: 'Edessa' }, { el: 'Ελευσίνα', en: 'Elefsina' }, { el: 'Ζάκυνθος', en: 'Zakynthos' },
-      { el: 'Ηγουμενίτσα', en: 'Igoumenitsa', de: 'Igoumenitsa', fr: 'Igoumenitsa', nl: 'Igoumenitsa' }, { el: 'Θήβα', en: 'Thebes' }, { el: 'Καβάλα', en: 'Kavala' }, { el: 'Καλαμάτα', en: 'Kalamata' }, { el: 'Καρδίτσα', en: 'Karditsa' }, { el: 'Καστοριά', en: 'Kastoria' }, { el: 'Κατερίνη', en: 'Katerini' }, { el: 'Κέρκυρα', en: 'Corfu', de: 'Korfu', fr: 'Corfou', nl: 'Corfu' }, { el: 'Κιλκίς', en: 'Kilkis' }, { el: 'Κοζάνη', en: 'Kozani' }, { el: 'Κομοτηνή', en: 'Komotini' }, { el: 'Κόρινθος', en: 'Corinth' }, { el: 'Κως', en: 'Kos' }, { el: 'Λαμία', en: 'Lamia' }, { el: 'Λευκάδα', en: 'Lefkada' }, { el: 'Λιβαδειά', en: 'Livadeia' }, { el: 'Μεσολόγγι', en: 'Mesolongi' }, { el: 'Μέγαρα', en: 'Megara' }, { el: 'Μυτιλήνη', en: 'Mytilene' }, { el: 'Νάουσα', en: 'Naousa' }, { el: 'Ναύπλιο', en: 'Nafplio' }, { el: 'Ναύπακτος', en: 'Nafpaktos' }, { el: 'Ξάνθη', en: 'Xanthi' }, { el: 'Ορεστιάδα', en: 'Orestiada' }, { el: 'Πειραιάς', en: 'Piraeus' },
-      { el: 'Πήλιο', en: 'Pelion', de: 'Pelion', fr: 'Pélion', nl: 'Pelion' }, { el: 'Πρέβεζα', en: 'Preveza' }, { el: 'Πτολεμαΐδα', en: 'Ptolemaida' }, { el: 'Πύργος', en: 'Pyrgos' }, { el: 'Ραφήνα', en: 'Rafina' }, { el: 'Ρέθυμνο', en: 'Rethymno' }, { el: 'Ρόδος', en: 'Rhodes' }, { el: 'Σάμος', en: 'Samos' }, { el: 'Σέρρες', en: 'Serres' }, { el: 'Σπάρτη', en: 'Sparta' }, { el: 'Τρίκαλα', en: 'Trikala' }, { el: 'Τρίπολη', en: 'Tripoli' }, { el: 'Φλώρινα', en: 'Florina' }, { el: 'Χαλκίδα', en: 'Chalkida' }, { el: 'Χανιά', en: 'Chania' }, { el: 'Χίος', en: 'Chios' },
-      { el: 'Γκύζη', en: 'Gizi', parent: 'Αθήνα' }, { el: 'Κηφισιά', en: 'Kifisia', parent: 'Αθήνα' }, { el: 'Μαρούσι', en: 'Marousi', parent: 'Αθήνα' }, { el: 'Γλυφάδα', en: 'Glyfada', parent: 'Αθήνα' }, { el: 'Περιστέρι', en: 'Peristeri', parent: 'Αθήνα' }, { el: 'Χαλάνδρι', en: 'Chalandri', parent: 'Αθήνα' }, { el: 'Νέα Σμύρνη', en: 'Nea Smyrni', parent: 'Αθήνα' }, { el: 'Καλλιθέα', en: 'Kallithea', parent: 'Αθήνα' }, { el: 'Αιγάλεω', en: 'Aigaleo', parent: 'Αθήνα' }, { el: 'Βούλα', en: 'Voula', parent: 'Αθήνα' }, { el: 'Βουλιαγμένη', en: 'Vouliagmeni', parent: 'Αθήνα' },
-      { el: 'Καλαμαριά', en: 'Kalamaria', parent: 'Θεσσαλονίκη' }, { el: 'Εύοσμος', en: 'Evosmos', parent: 'Θεσσαλονίκη' }, { el: 'Περαία', en: 'Peraia', parent: 'Θεσσαλονίκη' }, { el: 'Θέρμη', en: 'Thermi', parent: 'Θεσσαλονίκη' }, { el: 'Πανόραμα', en: 'Panorama', parent: 'Θεσσαλονίκη' }, { el: 'Σταυρούπολη', en: 'Stavroupoli', parent: 'Θεσσαλονίκη' }, { el: 'Σίνδος', en: 'Sindos', parent: 'Θεσσαλονίκη' }, { el: 'Ωραιόκαστρο', en: 'Oreokastro', parent: 'Θεσσαλονίκη' }, { el: 'Νεάπολη', en: 'Neapoli', parent: 'Θεσσαλονίκη' }, { el: 'Τούμπα', en: 'Toumba', parent: 'Θεσσαλονίκη' },
-      { el: 'Χαλκίδα', en: 'Chalkida', parent: 'Εύβοια' }, { el: 'Αιδηψός', en: 'Aidipsos', parent: 'Εύβοια' }, { el: 'Κάρυστος', en: 'Karystos', parent: 'Εύβοια' }, { el: 'Ερέτρια', en: 'Eretria', parent: 'Εύβοια' }, { el: 'Αλιβέρι', en: 'Aliveri', parent: 'Εύβοια' },
-      { el: 'Πορταριά', en: 'Portaria', parent: 'Πήλιο' }, { el: 'Μακρυνίτσα', en: 'Makrinitsa', parent: 'Πήλιο' }, { el: 'Πινακάτες', en: 'Pinakates', parent: 'Πήλιο' }, { el: 'Βυζίτσα', en: 'Vizitsa', parent: 'Πήλιο' }, { el: 'Μηλιές', en: 'Milies', parent: 'Πήλιο' }, { el: 'Τσαγκαράδα', en: 'Tsagkarada', parent: 'Πήλιο' }, { el: 'Μηλίνα', en: 'Milina', parent: 'Πήλιο' }, { el: 'Ζαγορά', en: 'Zagora', parent: 'Πήλιο' },
-      { el: 'Χανιά', en: 'Chania', parent: 'Κρήτη' }, { el: 'Ρέθυμνο', en: 'Rethymno', parent: 'Κρήτη' }, { el: 'Ηράκλειο', en: 'Heraklion', parent: 'Κρήτη' }, { el: 'Άγιος Νικόλαος', en: 'Agios Nikolaos', parent: 'Κρήτη' }, { el: 'Ιεράπετρα', en: 'Ierapetra', parent: 'Κρήτη' }, { el: 'Σητεία', en: 'Sitia', parent: 'Κρήτη' },
-      { el: 'Κρήτη', en: 'Crete', de: 'Kreta', fr: 'Crète', nl: 'Kreta' }, { el: 'Όλυμπος', en: 'Olympus' }, { el: 'Βασιλίτσα', en: 'Vasilitsa' }, { el: '3-5 Πηγάδια', en: '3-5 Pigadia' }, { el: 'Ελατοχώρι', en: 'Elatochori' }, { el: 'Παρνασσός', en: 'Parnassos' }, { el: 'Καλάβρυτα', en: 'Kalavryta' },
-      { el: 'Πολύγυρος', en: 'Polygyros', parent: 'Χαλκιδική' }, { el: 'Νέα Μουδανιά', en: 'Nea Moudania', parent: 'Χαλκιδική' }, { el: 'Νέα Καλλικράτεια', en: 'Nea Kallikrateia', parent: 'Χαλκιδική' }, { el: 'Νικήτη', en: 'Nikiti', parent: 'Χαλκιδική' }, { el: 'Νέος Μαρμαράς', en: 'Neos Marmaras', parent: 'Χαλκιδική' }, { el: 'Σάρτη', en: 'Sarti', parent: 'Χαλκιδική' }, { el: 'Σίβηρη', en: 'Siviri', parent: 'Χαλκιδική' }, { el: 'Ουρανούπολη', en: 'Ouranoupoli', parent: 'Χαλκιδική' }, { el: 'Πολύχρονο', en: 'Polychrono', parent: 'Χαλκιδική' }, { el: 'Σάνη', en: 'Sani', parent: 'Χαλκιδική' }, { el: 'Φούρκα', en: 'Fourka', parent: 'Χαλκιδική' }, { el: 'Αρναία', en: 'Arnaia', parent: 'Χαλκιδική' }, { el: 'Ιερισσός', en: 'Ierissos', parent: 'Χαλκιδική' }, { el: 'Κασσάνδρεια', en: 'Kassandreia', parent: 'Χαλκιδική' }, { el: 'Πευκοχώρι', en: 'Pefkochori', parent: 'Χαλκιδική' }, { el: 'Χανιώτη', en: 'Hanioti', parent: 'Χαλκιδική' }, { el: 'Καλλιθέα Χαλκιδικής', en: 'Kallithea Chalkidikis', parent: 'Χαλκιδική' }, { el: 'Άφυτος', en: 'Afytos', parent: 'Χαλκιδική' }, { el: 'Γερακινή', en: 'Gerakini', parent: 'Χαλκιδική' }, { el: 'Χαλκιδική', en: 'Chalkidiki', de: 'Chalkidiki', fr: 'Chalcidique', nl: 'Chalkidiki' }
-    ];
-
-    const parentTranslations = {
-      'Αθήνα': { el: 'Αθήνα', en: 'Athens', de: 'Athen', fr: 'Athènes', nl: 'Athene' },
-      'Θεσσαλονίκη': { el: 'Θεσσαλονίκη', en: 'Thessaloniki', de: 'Thessaloniki', fr: 'Thessalonique', nl: 'Thessaloniki' },
-      'Εύβοια': { el: 'Εύβοια', en: 'Evia', de: 'Evia', fr: 'Eubée', nl: 'Evia' },
-      'Κρήτη': { el: 'Κρήτη', en: 'Crete', de: 'Kreta', fr: 'Crète', nl: 'Kreta' },
-      'Χαλκιδική': { el: 'Χαλκιδική', en: 'Chalkidiki', de: 'Chalkidiki', fr: 'Chalcidique', nl: 'Chalkidiki' },
-      'Πήλιο': { el: 'Πήλιο', en: 'Pelion', de: 'Pelion', fr: 'Pélion', nl: 'Pelion' }
-    };
-
     const translationsData = {
-      el: { title:'Share the Ride – Δημιουργία Hashtags', subtitle:'Συμπλήρωσε τα στοιχεία της διαδρομής και πάτησε το κουμπί για να δημιουργήσεις έτοιμα hashtags για την ανάρτησή σου. Οι ετικέτες παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.', topNote:'Μπορείς να αναζητήσεις πόλεις με πληκτρολόγηση, να προσθέσεις ενδιάμεσους σταθμούς και πολλές ημερομηνίες.', missingCityNote:'Αν η πόλη που ψάχνεις λείπει ή έχεις οποιοδήποτε άλλο feedback που θα μπορούσε να βοηθήσει να βελτιωθεί το εργαλείο, στείλε μήνυμα στη <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a> για να το ενημερώσει. Το feedback σου είναι πολύτιμο για εμάς.', rideTypeLabel:'Τύπος ανάρτησης', rideTypeHint:'Το ελάχιστο απαιτούμενο είναι μία ετικέτα τύπου ανάρτησης.', petTagLabel:'Προαιρετικές ετικέτες', petTagHint:'Πάτησε πάνω στο κουτάκι για να προσθέσεις την αντίστοιχη ετικέτα στο τελικό κείμενο.', systematikaHint:'Το #Συστηματικά χρησιμοποιείται όταν η διαδρομή γίνεται επαναλαμβανόμενα, π.χ. κάθε μέρα, κάθε εβδομάδα ή κάθε μήνα.', petHint:'Το #pet μπορεί να χρησιμοποιηθεί όταν η ανάρτηση αφορά μεταφορά κατοικιδίου ή συνοδεία για pet.', originsLabel:'Πόλη εκκίνησης', originsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα. Μπορείς να προσθέσεις περισσότερες από μία.', destinationsLabel:'Τελικός προορισμός', destinationsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα. Μπορείς να προσθέσεις περισσότερες από μία.', stopsLabel:'Ενδιάμεσοι σταθμοί', stopsHint:'Πρόσθεσε προαιρετικές ενδιάμεσες στάσεις. Θα μπουν μετά τον τελικό προορισμό.', datesLabel:'Ημερομηνίες διαδρομής', datesHint:'Οι παλαιότερες ημερομηνίες είναι απενεργοποιημένες. Κάθε ημερομηνία θα μετατραπεί σε hashtag.', clearDatesBtn:'Καθαρισμός ημερομηνιών', generateBtn:'Δημιουργία hashtags', copyBtn:'Αντιγραφή', clearAllBtn:'Καθαρισμός όλων', outputLabel:'Έτοιμα hashtags', footerNote:'Σημείωση: οι ετικέτες δημιουργούνται πάντα στα Ελληνικά. Οι πόλεις με δύο λέξεις βγαίνουν χωρίς κενά, π.χ. #ΝέαΠέραμος.', messageLabel:'Μήνυμα για την ανάρτηση', messageHint:'Το μήνυμα αυτό θα προστεθεί κάτω από τα hashtags ώστε να μπορείς να αντιγράψεις όλο το post έτοιμο.', messagePlaceholder:'Γράψε εδώ το μήνυμα που θέλεις να εμφανίζεται κάτω από τα hashtags όταν κάνεις copy.', noResult:'Εδώ θα εμφανιστούν τα hashtags.', invalidCity:'Παρακαλώ διάλεξε πόλη από τη λίστα.', missingOrigin:'Διάλεξε τουλάχιστον μία πόλη εκκίνησης.', missingDestination:'Διάλεξε τουλάχιστον μία πόλη προορισμού.', missingDate:'Πρόσθεσε τουλάχιστον μία ημερομηνία ή χρησιμοποίησε το #Συστηματικά.', copied:'Το κείμενο αντιγράφηκε.', parentAuto:'Το βασικό hashtag προστίθεται αυτόματα.', weekdays:['Δε','Τρ','Τε','Πε','Πα','Σα','Κυ'], months:['Ιανουάριος','Φεβρουάριος','Μάρτιος','Απρίλιος','Μάιος','Ιούνιος','Ιούλιος','Αύγουστος','Σεπτέμβριος','Οκτώβριος','Νοέμβριος','Δεκέμβριος'] },
-      en: { title:'Share the Ride – Hashtag Generator', subtitle:'Fill in the trip details and press the button to generate ready-to-copy hashtags for your post. The hashtags are always generated in Greek, according to the group rules.', topNote:'You can search cities by typing, add intermediate stops, and add multiple dates.', missingCityNote:'If the city you are looking for is missing, or if you have any other feedback that could help improve this tool, please send a private message to <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a> to have it updated. Your feedback is valuable to us.', rideTypeLabel:'Post type', rideTypeHint:'At least one post-type hashtag is required.', petTagLabel:'Optional hashtags', petTagHint:'Tick the box to include that hashtag in the final text.', systematikaHint:'Use #Συστηματικά for recurring trips, for example daily, weekly, or monthly rides.', petHint:'Use #pet when the post is about transporting a pet or looking for pet accompaniment.', originsLabel:'Origin city', originsHint:'Start typing and choose a city from the list. You can add more than one.', destinationsLabel:'Final destination', destinationsHint:'Start typing and choose a city from the list. You can add more than one.', stopsLabel:'Intermediate stops', stopsHint:'Add optional intermediate stops. They will appear after the final destination.', datesLabel:'Trip dates', datesHint:'Past dates are disabled. Each date will become a hashtag.', clearDatesBtn:'Clear dates', generateBtn:'Generate hashtags', copyBtn:'Copy', clearAllBtn:'Clear all', outputLabel:'Ready hashtags', footerNote:'Note: hashtags are always generated in Greek. Cities with two words appear without spaces, for example #ΝέαΠέραμος.', messageLabel:'Message for the post', messageHint:'This message will be added below the hashtags so you can copy the whole post at once.', messagePlaceholder:'Write here the message you want to appear below the hashtags when you copy.', noResult:'Your hashtags will appear here.', invalidCity:'Please choose a city from the list.', missingOrigin:'Please choose at least one origin city.', missingDestination:'Please choose at least one destination city.', missingDate:'Please add at least one date or use #Συστηματικά.', copied:'The text was copied.', parentAuto:'The parent hashtag is added automatically.', weekdays:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], months:['January','February','March','April','May','June','July','August','September','October','November','December'] },
-      de: { title:'Share the Ride – Hashtag-Generator', subtitle:'Fülle die Reisedetails aus und erstelle kopierfertige Hashtags für deinen Beitrag. Die Hashtags werden immer auf Griechisch erstellt, gemäß den Gruppenregeln.', topNote:'Du kannst Städte durch Tippen suchen, Zwischenstopps hinzufügen und mehrere Daten eingeben.', missingCityNote:'Wenn die Stadt, die du suchst, fehlt oder du anderes hilfreiches Feedback zur Verbesserung dieses Tools hast, schicke bitte eine private Nachricht an <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>, damit es aktualisiert werden kann. Dein Feedback ist für uns wertvoll.', rideTypeLabel:'Beitragstyp', rideTypeHint:'Mindestens ein Hashtag für den Beitragstyp ist erforderlich.', petTagLabel:'Optionale Hashtags', petTagHint:'Markiere das Kästchen, um den Hashtag einzufügen.', systematikaHint:'Verwende #Συστηματικά für wiederkehrende Fahrten.', petHint:'Verwende #pet für Haustiere.', originsLabel:'Startort', originsHint:'Tippe und wähle eine Stadt aus der Liste.', destinationsLabel:'Zielort', destinationsHint:'Tippe und wähle eine Stadt aus der Liste.', stopsLabel:'Zwischenstopps', stopsHint:'Optionale Zwischenstopps erscheinen nach dem Zielort.', datesLabel:'Reisedaten', datesHint:'Vergangene Daten sind deaktiviert.', clearDatesBtn:'Daten löschen', generateBtn:'Hashtags erstellen', copyBtn:'Kopieren', clearAllBtn:'Alles löschen', outputLabel:'Fertige Hashtags', footerNote:'Hashtags werden immer auf Griechisch erstellt.', messageLabel:'Nachricht', messageHint:'Diese Nachricht wird unter den Hashtags hinzugefügt.', messagePlaceholder:'Schreibe hier deine Nachricht.', noResult:'Deine Hashtags erscheinen hier.', invalidCity:'Bitte wähle eine Stadt aus der Liste.', missingOrigin:'Bitte wähle mindestens einen Startort.', missingDestination:'Bitte wähle mindestens einen Zielort.', missingDate:'Bitte füge mindestens ein Datum hinzu oder verwende #Συστηματικά.', copied:'Der Text wurde kopiert.', parentAuto:'Der übergeordnete Hashtag wird automatisch hinzugefügt.', weekdays:['Mo','Di','Mi','Do','Fr','Sa','So'], months:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'] },
-      fr: { title:'Share the Ride – Générateur de hashtags', subtitle:'Remplissez les détails du trajet et générez des hashtags prêts à copier pour votre publication. Les hashtags sont toujours générés en grec.', topNote:'Vous pouvez rechercher des villes en tapant, ajouter des arrêts intermédiaires et plusieurs dates.', missingCityNote:'Si la ville que vous recherchez manque, envoyez un message privé à <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Type de publication', rideTypeHint:'Au moins un hashtag de type de publication est requis.', petTagLabel:'Hashtags optionnels', petTagHint:'Cochez la case pour inclure ce hashtag.', systematikaHint:'Utilisez #Συστηματικά pour les trajets récurrents.', petHint:'Utilisez #pet pour les animaux.', originsLabel:'Ville de départ', originsHint:'Commencez à taper et choisissez une ville.', destinationsLabel:'Destination finale', destinationsHint:'Commencez à taper et choisissez une ville.', stopsLabel:'Arrêts intermédiaires', stopsHint:'Les arrêts intermédiaires apparaissent après la destination.', datesLabel:'Dates du trajet', datesHint:'Les dates passées sont désactivées.', clearDatesBtn:'Effacer les dates', generateBtn:'Générer', copyBtn:'Copier', clearAllBtn:'Tout effacer', outputLabel:'Hashtags prêts', footerNote:'Les hashtags sont toujours générés en grec.', messageLabel:'Message', messageHint:'Ce message sera ajouté sous les hashtags.', messagePlaceholder:'Écrivez votre message ici.', noResult:'Vos hashtags apparaîtront ici.', invalidCity:'Veuillez choisir une ville dans la liste.', missingOrigin:'Veuillez choisir une ville de départ.', missingDestination:'Veuillez choisir une ville d’arrivée.', missingDate:'Veuillez ajouter au moins une date ou utiliser #Συστηματικά.', copied:'Le texte a été copié.', parentAuto:'Le hashtag parent est ajouté automatiquement.', weekdays:['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'], months:['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'] },
-      nl: { title:'Share the Ride – Hashtaggenerator', subtitle:'Vul de ritgegevens in en maak kant-en-klare hashtags voor je bericht. De hashtags worden altijd in het Grieks gegenereerd.', topNote:'Je kunt steden zoeken door te typen, tussenstops toevoegen en meerdere datums invoeren.', missingCityNote:'Als de stad ontbreekt, stuur dan een privébericht naar <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Berichttype', rideTypeHint:'Minimaal één hashtag voor het berichttype is vereist.', petTagLabel:'Optionele hashtags', petTagHint:'Vink het vakje aan om die hashtag toe te voegen.', systematikaHint:'Gebruik #Συστηματικά voor terugkerende ritten.', petHint:'Gebruik #pet voor huisdieren.', originsLabel:'Vertrekstad', originsHint:'Begin te typen en kies een stad.', destinationsLabel:'Eindbestemming', destinationsHint:'Begin te typen en kies een stad.', stopsLabel:'Tussenstops', stopsHint:'Tussenstops verschijnen na de eindbestemming.', datesLabel:'Reisdata', datesHint:'Datums in het verleden zijn uitgeschakeld.', clearDatesBtn:'Datums wissen', generateBtn:'Genereren', copyBtn:'Kopiëren', clearAllBtn:'Alles wissen', outputLabel:'Hashtags', footerNote:'Hashtags worden altijd in het Grieks gegenereerd.', messageLabel:'Bericht', messageHint:'Dit bericht wordt onder de hashtags toegevoegd.', messagePlaceholder:'Schrijf hier je bericht.', noResult:'Je hashtags verschijnen hier.', invalidCity:'Kies een stad uit de lijst.', missingOrigin:'Kies ten minste één vertrekstad.', missingDestination:'Kies ten minste één bestemmingsstad.', missingDate:'Voeg ten minste één datum toe of gebruik #Συστηματικά.', copied:'De tekst is gekopieerd.', parentAuto:'De bovenliggende hashtag wordt automatisch toegevoegd.', weekdays:['Ma','Di','Wo','Do','Vr','Za','Zo'], months:['Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'] },
-      it: { title:'Share the Ride – Generatore di hashtag', subtitle:'Compila i dettagli del viaggio e genera hashtag pronti da copiare. Gli hashtag sono sempre in greco.', topNote:'Puoi cercare città digitando, aggiungere fermate intermedie e selezionare più date.', missingCityNote:'Se manca una città, invia un messaggio privato a <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Tipo di post', rideTypeHint:'È richiesto almeno un hashtag.', petTagLabel:'Hashtag opzionali', petTagHint:'Seleziona la casella per includere questo hashtag.', systematikaHint:'Usa #Συστηματικά per viaggi ricorrenti.', petHint:'Usa #pet per gli animali.', originsLabel:'Città di partenza', originsHint:'Inizia a digitare e scegli una città.', destinationsLabel:'Destinazione finale', destinationsHint:'Inizia a digitare e scegli una città.', stopsLabel:'Fermate intermedie', stopsHint:'Le fermate appariranno dopo la destinazione finale.', datesLabel:'Date del viaggio', datesHint:'Le date passate sono disattivate.', clearDatesBtn:'Cancella date', generateBtn:'Genera', copyBtn:'Copia', clearAllBtn:'Cancella tutto', outputLabel:'Hashtag pronti', footerNote:'Gli hashtag sono sempre generati in greco.', messageLabel:'Messaggio', messageHint:'Questo messaggio verrà aggiunto sotto gli hashtag.', messagePlaceholder:'Scrivi qui il tuo messaggio.', noResult:'I tuoi hashtag appariranno qui.', invalidCity:'Scegli una città dalla lista.', missingOrigin:'Scegli almeno una città di partenza.', missingDestination:'Scegli almeno una città di arrivo.', missingDate:'Aggiungi almeno una data oppure usa #Συστηματικά.', copied:'Il testo è stato copiato.', parentAuto:'L’hashtag principale viene aggiunto automaticamente.', weekdays:['Lun','Mar','Mer','Gio','Ven','Sab','Dom'], months:['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'] },
-      es: { title:'Share the Ride – Generador de hashtags', subtitle:'Completa los detalles del viaje y genera hashtags listos para copiar. Los hashtags siempre se generan en griego.', topNote:'Puedes buscar ciudades escribiendo, añadir paradas intermedias y seleccionar varias fechas.', missingCityNote:'Si falta una ciudad, envía un mensaje privado a <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Tipo de publicación', rideTypeHint:'Se requiere al menos un hashtag.', petTagLabel:'Hashtags opcionales', petTagHint:'Marca la casilla para incluir ese hashtag.', systematikaHint:'Usa #Συστηματικά para viajes recurrentes.', petHint:'Usa #pet para mascotas.', originsLabel:'Ciudad de origen', originsHint:'Empieza a escribir y elige una ciudad.', destinationsLabel:'Destino final', destinationsHint:'Empieza a escribir y elige una ciudad.', stopsLabel:'Paradas intermedias', stopsHint:'Las paradas aparecerán después del destino final.', datesLabel:'Fechas del viaje', datesHint:'Las fechas pasadas están deshabilitadas.', clearDatesBtn:'Borrar fechas', generateBtn:'Generar', copyBtn:'Copiar', clearAllBtn:'Borrar todo', outputLabel:'Hashtags listos', footerNote:'Los hashtags siempre se generan en griego.', messageLabel:'Mensaje', messageHint:'Este mensaje se añadirá debajo de los hashtags.', messagePlaceholder:'Escribe aquí tu mensaje.', noResult:'Tus hashtags aparecerán aquí.', invalidCity:'Elige una ciudad de la lista.', missingOrigin:'Elige al menos una ciudad de origen.', missingDestination:'Elige al menos una ciudad de destino.', missingDate:'Añade al menos una fecha o usa #Συστηματικά.', copied:'El texto se ha copiado.', parentAuto:'El hashtag principal se añade automáticamente.', weekdays:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], months:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'] },
-      pl: { title:'Share the Ride – Generator hashtagów', subtitle:'Uzupełnij szczegóły przejazdu i wygeneruj gotowe hashtagi. Hashtagi są zawsze po grecku.', topNote:'Możesz wyszukiwać miasta, wpisując tekst, dodawać przystanki pośrednie i wybierać wiele dat.', missingCityNote:'Jeśli brakuje miasta, wyślij prywatną wiadomość do <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Typ posta', rideTypeHint:'Wymagany jest co najmniej jeden hashtag.', petTagLabel:'Opcjonalne hashtagi', petTagHint:'Zaznacz pole, aby dodać hashtag.', systematikaHint:'Użyj #Συστηματικά dla regularnych przejazdów.', petHint:'Użyj #pet dla zwierząt.', originsLabel:'Miasto początkowe', originsHint:'Zacznij pisać i wybierz miasto.', destinationsLabel:'Cel końcowy', destinationsHint:'Zacznij pisać i wybierz miasto.', stopsLabel:'Przystanki pośrednie', stopsHint:'Przystanki pojawią się po miejscu docelowym.', datesLabel:'Daty przejazdu', datesHint:'Przeszłe daty są wyłączone.', clearDatesBtn:'Wyczyść daty', generateBtn:'Generuj', copyBtn:'Kopiuj', clearAllBtn:'Wyczyść wszystko', outputLabel:'Hashtagi', footerNote:'Hashtagi są zawsze generowane po grecku.', messageLabel:'Wiadomość', messageHint:'Ta wiadomość zostanie dodana pod hashtagami.', messagePlaceholder:'Napisz tutaj wiadomość.', noResult:'Tutaj pojawią się Twoje hashtagi.', invalidCity:'Wybierz miasto z listy.', missingOrigin:'Wybierz co najmniej jedno miasto początkowe.', missingDestination:'Wybierz co najmniej jedno miasto docelowe.', missingDate:'Dodaj co najmniej jedną datę lub użyj #Συστηματικά.', copied:'Tekst został skopiowany.', parentAuto:'Nadrzędny hashtag jest dodawany automatycznie.', weekdays:['Pon','Wt','Śr','Czw','Pt','Sob','Nd'], months:['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'] }
+      el: { title:'Share the Ride – Δημιουργία Hashtags', subtitle:'Συμπλήρωσε τα στοιχεία της διαδρομής και πάτησε το κουμπί για να δημιουργήσεις έτοιμα hashtags για την ανάρτησή σου. Οι ετικέτες παράγονται πάντα στα Ελληνικά, σύμφωνα με τους κανόνες της ομάδας.', topNote:'Μπορείς να αναζητήσεις πόλεις με πληκτρολόγηση, να προσθέσεις ενδιάμεσους σταθμούς και πολλές ημερομηνίες.', missingCityNote:'Αν η πόλη που ψάχνεις λείπει ή έχεις οποιοδήποτε άλλο feedback που θα μπορούσε να βοηθήσει να βελτιωθεί το εργαλείο, στείλε μήνυμα στη <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a> για να το ενημερώσει. Το feedback σου είναι πολύτιμο για εμάς.', rideTypeLabel:'Τύπος ανάρτησης', rideTypeHint:'Επίλεξε αν ψάχνεις ή προσφέρεις διαδρομή.', passengerLabel:'Άτομα / θέσεις', passengerHint:'Προαιρετικό. Αν επιλεγεί, θα εμφανιστεί ως 👤 και ο αριθμός στο τελικό αποτέλεσμα.', petTagLabel:'Προαιρετικές ετικέτες', petTagHint:'Πάτησε πάνω στο κουτάκι για να προσθέσεις την αντίστοιχη ετικέτα στο τελικό κείμενο.', systematikaHint:'Το #Συστηματικά χρησιμοποιείται όταν η διαδρομή γίνεται επαναλαμβανόμενα.', petHint:'Το #pet μπορεί να χρησιμοποιηθεί όταν η ανάρτηση αφορά μεταφορά κατοικιδίου.', originsLabel:'Πόλη εκκίνησης', originsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα.', destinationsLabel:'Τελικός προορισμός', destinationsHint:'Άρχισε να γράφεις και διάλεξε πόλη από τη λίστα.', stopsLabel:'Ενδιάμεσοι σταθμοί', stopsHint:'Πρόσθεσε προαιρετικές ενδιάμεσες στάσεις. Θα μπουν μετά τον τελικό προορισμό.', datesLabel:'Ημερομηνίες διαδρομής', datesHint:'Οι παλαιότερες ημερομηνίες είναι απενεργοποιημένες.', clearDatesBtn:'Καθαρισμός ημερομηνιών', generateBtn:'Δημιουργία hashtags', copyBtn:'Αντιγραφή', clearAllBtn:'Καθαρισμός όλων', outputLabel:'Έτοιμο post', footerNote:'Σημείωση: οι ετικέτες δημιουργούνται πάντα στα Ελληνικά.', messageLabel:'Μήνυμα για την ανάρτηση', messageHint:'Το μήνυμα αυτό θα προστεθεί κάτω από τα hashtags.', messagePlaceholder:'Γράψε εδώ το μήνυμα που θέλεις να εμφανίζεται κάτω από τα hashtags όταν κάνεις copy.', noResult:'Εδώ θα εμφανιστεί το έτοιμο post.', missingOrigin:'Διάλεξε τουλάχιστον μία πόλη εκκίνησης.', missingDestination:'Διάλεξε τουλάχιστον μία πόλη προορισμού.', missingDate:'Πρόσθεσε τουλάχιστον μία ημερομηνία ή χρησιμοποίησε το #Συστηματικά.', copied:'Το κείμενο αντιγράφηκε.', parentAuto:'Το βασικό hashtag προστίθεται αυτόματα.', weekdays:['Δε','Τρ','Τε','Πε','Πα','Σα','Κυ'], months:['Ιανουάριος','Φεβρουάριος','Μάρτιος','Απρίλιος','Μάιος','Ιούνιος','Ιούλιος','Αύγουστος','Σεπτέμβριος','Οκτώβριος','Νοέμβριος','Δεκέμβριος'] },
+      en: { title:'Share the Ride – Hashtag Generator', subtitle:'Fill in the trip details and generate a ready-to-copy post. Hashtags are always generated in Greek, according to the group rules.', topNote:'You can search cities by typing, add intermediate stops, and add multiple dates.', missingCityNote:'If the city you are looking for is missing, or if you have any other feedback that could help improve this tool, please send a private message to <a href="https://www.facebook.com/christina.parpoula/" target="_blank" rel="noopener noreferrer">Christina</a>.', rideTypeLabel:'Post type', rideTypeHint:'Choose whether you are looking for a ride or offering one.', passengerLabel:'Passengers / seats', passengerHint:'Optional. If selected, it will appear as 👤 plus the chosen number in the final result.', petTagLabel:'Optional hashtags', petTagHint:'Tick the box to include that hashtag in the final text.', systematikaHint:'Use #Συστηματικά for recurring trips.', petHint:'Use #pet for pet transport.', originsLabel:'Origin city', originsHint:'Start typing and choose a city from the list.', destinationsLabel:'Final destination', destinationsHint:'Start typing and choose a city from the list.', stopsLabel:'Intermediate stops', stopsHint:'Add optional intermediate stops. They will appear after the final destination.', datesLabel:'Trip dates', datesHint:'Past dates are disabled.', clearDatesBtn:'Clear dates', generateBtn:'Generate hashtags', copyBtn:'Copy', clearAllBtn:'Clear all', outputLabel:'Ready post', footerNote:'Note: hashtags are always generated in Greek.', messageLabel:'Message for the post', messageHint:'This message will be added below the hashtags.', messagePlaceholder:'Write here the message you want to appear below the hashtags when you copy.', noResult:'Your ready post will appear here.', missingOrigin:'Please choose at least one origin city.', missingDestination:'Please choose at least one destination city.', missingDate:'Please add at least one date or use #Συστηματικά.', copied:'The text was copied.', parentAuto:'The parent hashtag is added automatically.', weekdays:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], months:['January','February','March','April','May','June','July','August','September','October','November','December'] }
     };
-
-    const rideOptionsByLang = {
-      el:['Αναζητώ','Προσφέρω','Και τα δύο'], en:['Looking for','Offering','Both'], de:['Suche','Biete','Beides'], fr:['Je cherche','J’offre','Les deux'], nl:['Ik zoek','Ik bied aan','Beide'], it:['Cerco','Offro','Entrambi'], es:['Busco','Ofrezco','Ambos'], pl:['Szukam','Oferuję','Oba']
+    const fallback = translationsData.en;
+    ['de','fr','nl','it','es','pl'].forEach(code => translationsData[code] = { ...fallback, ...translationsData[code] });
+    const rideOptionsByLang = { el:['Αναζητώ','Προσφέρω','Και τα δύο'], en:['Looking for','Offering','Both'], de:['Suche','Biete','Beides'], fr:['Je cherche','J’offre','Les deux'], nl:['Ik zoek','Ik bied aan','Beide'], it:['Cerco','Offro','Entrambi'], es:['Busco','Ofrezco','Ambos'], pl:['Szukam','Oferuję','Oba'] };
+    const passengerHints = {
+      el:'Προαιρετικό. Αν επιλεγεί, θα εμφανιστεί ως 👤 και ο αριθμός στο τελικό αποτέλεσμα.',
+      en:'Optional. If selected, it will appear as 👤 plus the chosen number in the final result.',
+      de:'Optional. Wenn ausgewählt, wird es als 👤 mit der gewählten Zahl im Ergebnis angezeigt.',
+      fr:'Optionnel. Si sélectionné, cela apparaîtra comme 👤 avec le nombre choisi dans le résultat final.',
+      nl:'Optioneel. Indien geselecteerd, verschijnt dit als 👤 met het gekozen aantal in het eindresultaat.',
+      it:'Opzionale. Se selezionato, apparirà come 👤 con il numero scelto nel risultato finale.',
+      es:'Opcional. Si se selecciona, aparecerá como 👤 con el número elegido en el resultado final.',
+      pl:'Opcjonalne. Jeśli wybrane, pojawi się jako 👤 z wybraną liczbą w wyniku końcowym.'
     };
-
+    const cityOptions = [];
+  </script>
+  <script>
+    // keep the dataset from fixed-6 concise here by reusing the visible page's current city list manually as needed
+    const baseCities = [
+      { el:'Αθήνα', en:'Athens' }, { el:'Θεσσαλονίκη', en:'Thessaloniki' }, { el:'Πάτρα', en:'Patras' }, { el:'Ηράκλειο', en:'Heraklion' }, { el:'Λάρισα', en:'Larisa' }, { el:'Βόλος', en:'Volos' }, { el:'Ιωάννινα', en:'Ioannina' }, { el:'Ηγουμενίτσα', en:'Igoumenitsa' }, { el:'Κέρκυρα', en:'Corfu' }, { el:'Κατερίνη', en:'Katerini' }, { el:'Λαμία', en:'Lamia' }, { el:'Πειραιάς', en:'Piraeus' }, { el:'Χαλκίδα', en:'Chalkida' }, { el:'Χανιά', en:'Chania' }, { el:'Ρέθυμνο', en:'Rethymno' }, { el:'Ρόδος', en:'Rhodes' }, { el:'Τρίκαλα', en:'Trikala' }, { el:'Κοζάνη', en:'Kozani' }, { el:'Σέρρες', en:'Serres' }, { el:'Κόρινθος', en:'Corinth' }, { el:'Καλαμάτα', en:'Kalamata' }, { el:'Ναύπλιο', en:'Nafplio' }, { el:'Αλεξανδρούπολη', en:'Alexandroupoli' }, { el:'Καστοριά', en:'Kastoria' }, { el:'Φλώρινα', en:'Florina' }, { el:'Ξάνθη', en:'Xanthi' }, { el:'Καβάλα', en:'Kavala' }, { el:'Δράμα', en:'Drama' }, { el:'Λευκάδα', en:'Lefkada' }, { el:'Ζάκυνθος', en:'Zakynthos' },
+      { el:'Καλαμαριά', en:'Kalamaria', parent:'Θεσσαλονίκη' }, { el:'Εύοσμος', en:'Evosmos', parent:'Θεσσαλονίκη' }, { el:'Θέρμη', en:'Thermi', parent:'Θεσσαλονίκη' }, { el:'Πανόραμα', en:'Panorama', parent:'Θεσσαλονίκη' },
+      { el:'Κηφισιά', en:'Kifisia', parent:'Αθήνα' }, { el:'Μαρούσι', en:'Marousi', parent:'Αθήνα' }, { el:'Γλυφάδα', en:'Glyfada', parent:'Αθήνα' }, { el:'Χαλάνδρι', en:'Chalandri', parent:'Αθήνα' }, { el:'Νέα Σμύρνη', en:'Nea Smyrni', parent:'Αθήνα' },
+      { el:'Πολύγυρος', en:'Polygyros', parent:'Χαλκιδική' }, { el:'Νέα Μουδανιά', en:'Nea Moudania', parent:'Χαλκιδική' }, { el:'Νικήτη', en:'Nikiti', parent:'Χαλκιδική' }, { el:'Νέος Μαρμαράς', en:'Neos Marmaras', parent:'Χαλκιδική' }, { el:'Σάρτη', en:'Sarti', parent:'Χαλκιδική' }, { el:'Χαλκιδική', en:'Chalkidiki' },
+      { el:'Χανιά', en:'Chania', parent:'Κρήτη' }, { el:'Ρέθυμνο', en:'Rethymno', parent:'Κρήτη' }, { el:'Ηράκλειο', en:'Heraklion', parent:'Κρήτη' }, { el:'Άγιος Νικόλαος', en:'Agios Nikolaos', parent:'Κρήτη' }, { el:'Κρήτη', en:'Crete' },
+      { el:'Πορταριά', en:'Portaria', parent:'Πήλιο' }, { el:'Μακρυνίτσα', en:'Makrinitsa', parent:'Πήλιο' }, { el:'Ζαγορά', en:'Zagora', parent:'Πήλιο' }, { el:'Πήλιο', en:'Pelion' },
+      { el:'Όλυμπος', en:'Olympus' }, { el:'Βασιλίτσα', en:'Vasilitsa' }, { el:'Ελατοχώρι', en:'Elatochori' }, { el:'Καλάβρυτα', en:'Kalavryta' }
+    ];
+    baseCities.forEach(c => cityOptions.push(c));
+    const parentTranslations = { 'Αθήνα':{el:'Αθήνα',en:'Athens'}, 'Θεσσαλονίκη':{el:'Θεσσαλονίκη',en:'Thessaloniki'}, 'Χαλκιδική':{el:'Χαλκιδική',en:'Chalkidiki'}, 'Κρήτη':{el:'Κρήτη',en:'Crete'}, 'Πήλιο':{el:'Πήλιο',en:'Pelion'} };
     const weekdayGreek = ['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
     const datesState = [];
     const selectedCities = { origins: [], destinations: [], stops: [] };
     let lang = 'el';
     let calendarViewDate = new Date();
     const now = new Date();
-    const todayIso = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
-
+    const todayIso = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     const rideTypeSelect = document.getElementById('rideType');
+    const passengerCountSelect = document.getElementById('passengerCount');
     const petOption = document.getElementById('petOption');
     const systematikaOption = document.getElementById('systematikaOption');
     const datesSelect = document.getElementById('dates');
@@ -315,287 +257,35 @@
     const result = document.getElementById('result');
     const messageBox = document.getElementById('messageBox');
     const successMsg = document.getElementById('successMsg');
-    const routePreview = document.getElementById('routePreview');
-
     const cityFields = {
       origins: { input: document.getElementById('originInput'), chips: document.getElementById('originsChips'), suggestions: document.getElementById('originSuggestions') },
       destinations: { input: document.getElementById('destinationInput'), chips: document.getElementById('destinationsChips'), suggestions: document.getElementById('destinationSuggestions') },
       stops: { input: document.getElementById('stopsInput'), chips: document.getElementById('stopsChips'), suggestions: document.getElementById('stopsSuggestions') }
     };
-
-    function normalizeHashtagText(text) { return text.replace(/\s+/g,''); }
-    function getParentLabel(parentName) { const parent = parentTranslations[parentName]; return parent ? (parent[lang] || parent.en || parent.el) : parentName; }
-    function formatSuggestionLabel(city) { const display = city[lang] || city.en || city.el; return city.parent ? `${display} (${getParentLabel(city.parent)})` : display; }
-
-    function getFilteredCities(query) {
-      const clean = query.trim().toLowerCase();
-      const seen = new Set();
-      const source = clean ? cityOptions.filter(city => [city.el,city.en,city.de||'',city.fr||'',city.nl||'',city.parent||''].join(' ').toLowerCase().includes(clean)) : cityOptions;
-      return source.filter(city => {
-        const key = city.el + '|' + (city.parent || '');
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      }).slice(0,12);
-    }
-
-    function hideSuggestions(group) {
-      cityFields[group].suggestions.innerHTML = '';
-      cityFields[group].suggestions.classList.remove('visible');
-    }
-
-    function updateRoutePreview() {
-      const fromCities = selectedCities.origins.length ? selectedCities.origins.map(c => '#' + normalizeHashtagText(c)).join(' ') : '…';
-      const toCities = selectedCities.destinations.length ? selectedCities.destinations.map(c => '#' + normalizeHashtagText(c)).join(' ') : '…';
-      const viaCities = selectedCities.stops.length ? selectedCities.stops.map(c => '#' + normalizeHashtagText(c)).join(' ') : '…';
-      routePreview.innerHTML = ` ${fromCities} → 🛬 ${toCities}<br>(📍 ${viaCities})`;
-    }
-
-    function renderCityChips(group) {
-      const container = cityFields[group].chips;
-      container.innerHTML = '';
-      selectedCities[group].forEach(city => {
-        const chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = `<span>${city}</span><button type="button" aria-label="Remove">×</button>`;
-        chip.querySelector('button').addEventListener('click', () => {
-          selectedCities[group] = selectedCities[group].filter(item => item !== city);
-          renderCityChips(group);
-          updateRoutePreview();
-        });
-        container.appendChild(chip);
-      });
-    }
-
-    function addMatchedCity(group, city) {
-      if (!selectedCities[group].includes(city.el)) selectedCities[group].push(city.el);
-      if (city.parent && !selectedCities[group].includes(city.parent)) selectedCities[group].push(city.parent);
-      cityFields[group].input.value = '';
-      renderCityChips(group);
-      updateRoutePreview();
-      hideSuggestions(group);
-      successMsg.textContent = '';
-      if (!result.textContent.trim() || Object.values(translationsData).some(tr => result.textContent === tr.noResult)) {
-        result.textContent = translationsData[lang].noResult;
-      }
-    }
-
-    function renderSuggestions(group, query) {
-      const box = cityFields[group].suggestions;
-      const matches = getFilteredCities(query);
-      box.innerHTML = '';
-      if (!matches.length) { box.classList.remove('visible'); return; }
-      matches.forEach(city => {
-        const item = document.createElement('div');
-        item.className = 'suggestion-item';
-        item.innerHTML = `<div class="suggestion-main">${formatSuggestionLabel(city)}</div>${city.parent ? `<div class="suggestion-sub">${translationsData[lang].parentAuto}</div>` : ''}`;
-        item.addEventListener('mousedown', (event) => { event.preventDefault(); addMatchedCity(group, city); });
-        box.appendChild(item);
-      });
-      box.classList.add('visible');
-    }
-
-    function getOptionalTags() {
-      const tags = [];
-      if (petOption.checked) tags.push('pet');
-      if (systematikaOption.checked) tags.push('Συστηματικά');
-      return tags;
-    }
-
-    function formatDateHashtag(isoDate) {
-      const [year, month, day] = isoDate.split('-').map(Number);
-      const d = new Date(year, month - 1, day);
-      const weekday = weekdayGreek[d.getDay()];
-      return weekday + String(day).padStart(2,'0') + String(month).padStart(2,'0') + String(year);
-    }
-
-    function formatIsoDate(year, monthIndex, day) { return `${year}-${String(monthIndex+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`; }
-
-    function renderDates() {
-      datesSelect.innerHTML = '';
-      datesState.forEach(value => {
-        const option = document.createElement('option');
-        option.value = value;
-        option.textContent = '#' + formatDateHashtag(value);
-        option.selected = true;
-        datesSelect.appendChild(option);
-      });
-    }
-
-    function toggleDate(isoDate) {
-      if (isoDate < todayIso) return;
-      const index = datesState.indexOf(isoDate);
-      if (index === -1) { datesState.push(isoDate); datesState.sort(); }
-      else { datesState.splice(index,1); }
-      renderDates();
-      renderCalendar();
-      successMsg.textContent = '';
-    }
-
-    function renderCalendar() {
-      const t = translationsData[lang] || translationsData.en;
-      dateMonthLabel.textContent = `${t.months[calendarViewDate.getMonth()]} ${calendarViewDate.getFullYear()}`;
-      dateWeekdays.innerHTML = t.weekdays.map(day => `<div>${day}</div>`).join('');
-      const year = calendarViewDate.getFullYear();
-      const monthIndex = calendarViewDate.getMonth();
-      const firstDay = new Date(year, monthIndex, 1);
-      const startOffset = (firstDay.getDay() + 6) % 7;
-      const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
-      dateGrid.innerHTML = '';
-      for (let i=0; i<startOffset; i++) {
-        const empty = document.createElement('div');
-        empty.className = 'date-empty';
-        dateGrid.appendChild(empty);
-      }
-      for (let day=1; day<=daysInMonth; day++) {
-        const isoDate = formatIsoDate(year, monthIndex, day);
-        const isPast = isoDate < todayIso;
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'date-day' + (datesState.includes(isoDate) ? ' selected' : '');
-        button.textContent = String(day);
-        if (isPast) button.disabled = true;
-        else button.addEventListener('click', () => toggleDate(isoDate));
-        dateGrid.appendChild(button);
-      }
-    }
-
-    function generateHashtags() {
-      successMsg.textContent = '';
-      const optional = getOptionalTags();
-      if (!selectedCities.origins.length) { result.textContent = translationsData[lang].missingOrigin; return; }
-      if (!selectedCities.destinations.length) { result.textContent = translationsData[lang].missingDestination; return; }
-      if (!datesState.length && !optional.includes('Συστηματικά')) { result.textContent = translationsData[lang].missingDate; return; }
-      const hashtags = [];
-      rideTypeSelect.value.split(',').map(v => v.trim()).forEach(type => hashtags.push('#' + type));
-      hashtags.push('🛫');
-      selectedCities.origins.forEach(city=>hashtags.push('#'+normalizeHashtagText(city)));
-      hashtags.push('🛬');
-      selectedCities.destinations.forEach(city=>hashtags.push('#'+normalizeHashtagText(city)));
-      if (selectedCities.stops.length) {
-        hashtags.push('(');
-        hashtags.push('🔁');
-        selectedCities.stops.forEach((city,i)=>{ if(i>0) hashtags.push('·'); hashtags.push('#'+normalizeHashtagText(city)); });
-        hashtags.push(')');
-      }
-      datesState.forEach(date=>hashtags.push('#'+formatDateHashtag(date)));
-      optional.forEach(tag=>hashtags.push('#'+tag));(tag => hashtags.push('#' + tag));
-      const unique = [...new Set(hashtags)];
-      const message = messageBox.value.trim();
-      result.textContent = message ? unique.join(' ') + '\n\n' + message : unique.join(' ');
-    }
-
-    async function copyResult() {
-      const text = result.textContent.trim();
-      if (!text || Object.values(translationsData).some(tr => text === tr.noResult)) return;
-      try {
-        await navigator.clipboard.writeText(text);
-        successMsg.textContent = translationsData[lang].copied;
-      } catch {
-        successMsg.textContent = 'Copy failed.';
-      }
-    }
-
-    function clearAll() {
-      rideTypeSelect.selectedIndex = 0;
-      petOption.checked = false;
-      systematikaOption.checked = false;
-      Object.keys(selectedCities).forEach(group => {
-        selectedCities[group] = [];
-        renderCityChips(group);
-        cityFields[group].input.value = '';
-        hideSuggestions(group);
-      });
-      datesState.length = 0;
-      renderDates();
-      renderCalendar();
-      messageBox.value = '';
-      successMsg.textContent = '';
-      result.textContent = translationsData[lang].noResult;
-      updateRoutePreview();
-    }
-
-    function setLanguage(newLang) {
-      lang = newLang;
-      ['el','en','de','fr','nl','it','es','pl'].forEach(code => {
-        const button = document.getElementById('lang-' + code);
-        if (button) button.classList.toggle('active', lang === code);
-      });
-      const t = translationsData[lang];
-      document.getElementById('title').textContent = t.title;
-      document.getElementById('subtitle').textContent = t.subtitle;
-      document.getElementById('top-note').textContent = t.topNote;
-      document.getElementById('missingCityNote').innerHTML = t.missingCityNote || '';
-      document.getElementById('rideTypeLabel').textContent = t.rideTypeLabel;
-      document.getElementById('rideTypeHint').textContent = t.rideTypeHint;
-      document.getElementById('petTagLabel').textContent = t.petTagLabel;
-      document.getElementById('petTagHint').textContent = t.petTagHint;
-      document.getElementById('systematikaHint').textContent = t.systematikaHint;
-      document.getElementById('petHint').textContent = t.petHint;
-      document.getElementById('originsLabel').textContent = t.originsLabel;
-      document.getElementById('originsHint').textContent = t.originsHint;
-      document.getElementById('destinationsLabel').textContent = t.destinationsLabel;
-      document.getElementById('destinationsHint').textContent = t.destinationsHint;
-      document.getElementById('stopsLabel').textContent = t.stopsLabel;
-      document.getElementById('stopsHint').textContent = t.stopsHint;
-      document.getElementById('datesLabel').textContent = t.datesLabel;
-      document.getElementById('datesHint').textContent = t.datesHint;
-      document.getElementById('clearDatesBtn').textContent = t.clearDatesBtn;
-      document.getElementById('generateBtn').textContent = t.generateBtn;
-      document.getElementById('copyBtn').textContent = t.copyBtn;
-      document.getElementById('clearAllBtn').textContent = t.clearAllBtn;
-      document.getElementById('outputLabel').textContent = t.outputLabel;
-      document.getElementById('footerNote').textContent = t.footerNote;
-      document.getElementById('messageLabel').textContent = t.messageLabel;
-      document.getElementById('messageHint').textContent = t.messageHint;
-      messageBox.placeholder = t.messagePlaceholder;
-      const rideOptions = rideOptionsByLang[lang] || rideOptionsByLang.en;
-      Array.from(rideTypeSelect.options).forEach((option, i) => option.textContent = rideOptions[i]);
-      updateRoutePreview();
-      renderCalendar();
-      if (!result.textContent.trim() || Object.values(translationsData).some(tr => result.textContent === tr.noResult)) {
-        result.textContent = t.noResult;
-      }
-    }
-
-    document.getElementById('lang-el').addEventListener('click', () => setLanguage('el'));
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-    document.getElementById('lang-de').addEventListener('click', () => setLanguage('de'));
-    document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
-    document.getElementById('lang-nl').addEventListener('click', () => setLanguage('nl'));
-    document.getElementById('lang-it').addEventListener('click', () => setLanguage('it'));
-    document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
-    document.getElementById('lang-pl').addEventListener('click', () => setLanguage('pl'));
-    document.getElementById('clearDatesBtn').addEventListener('click', () => { datesState.length = 0; renderDates(); renderCalendar(); });
-    document.getElementById('generateBtn').addEventListener('click', generateHashtags);
-    document.getElementById('copyBtn').addEventListener('click', copyResult);
-    document.getElementById('clearAllBtn').addEventListener('click', clearAll);
-    prevMonthBtn.addEventListener('click', () => { calendarViewDate = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth()-1, 1); renderCalendar(); });
-    nextMonthBtn.addEventListener('click', () => { calendarViewDate = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth()+1, 1); renderCalendar(); });
-
-    Object.entries(cityFields).forEach(([group, field]) => {
-      field.input.addEventListener('input', () => renderSuggestions(group, field.input.value));
-      field.input.addEventListener('focus', () => renderSuggestions(group, field.input.value));
-      field.input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          const matches = getFilteredCities(field.input.value);
-          if (matches.length) addMatchedCity(group, matches[0]);
-        }
-      });
-      field.input.addEventListener('blur', () => setTimeout(() => hideSuggestions(group), 120));
-    });
-
-    document.addEventListener('click', (event) => {
-      Object.entries(cityFields).forEach(([group, field]) => {
-        if (!field.input.contains(event.target) && !field.suggestions.contains(event.target)) hideSuggestions(group);
-      });
-    });
-
-    renderDates();
-    updateRoutePreview();
-    renderCalendar();
-    setLanguage('el');
+    function normalizeHashtagText(text){ return text.replace(/\s+/g,''); }
+    function getParentLabel(parentName){ const p = parentTranslations[parentName]; return p ? (p[lang] || p.en || p.el) : parentName; }
+    function formatSuggestionLabel(city){ const display = city[lang] || city.en || city.el; return city.parent ? `${display} (${getParentLabel(city.parent)})` : display; }
+    function getFilteredCities(query){ const clean=query.trim().toLowerCase(); const seen=new Set(); const src=clean ? cityOptions.filter(c => [c.el,c.en,c.parent||''].join(' ').toLowerCase().includes(clean)) : cityOptions; return src.filter(c=>{const key=c.el+'|'+(c.parent||''); if(seen.has(key)) return false; seen.add(key); return true;}).slice(0,12); }
+    function hideSuggestions(group){ cityFields[group].suggestions.innerHTML=''; cityFields[group].suggestions.classList.remove('visible'); }
+    function renderCityChips(group){ const container=cityFields[group].chips; container.innerHTML=''; selectedCities[group].forEach(city=>{ const chip=document.createElement('div'); chip.className='chip'; chip.innerHTML=`<span>${city}</span><button type="button" aria-label="Remove">×</button>`; chip.querySelector('button').addEventListener('click',()=>{ selectedCities[group]=selectedCities[group].filter(x=>x!==city); renderCityChips(group); }); container.appendChild(chip); }); }
+    function addMatchedCity(group, city){ if(!selectedCities[group].includes(city.el)) selectedCities[group].push(city.el); if(city.parent && !selectedCities[group].includes(city.parent)) selectedCities[group].push(city.parent); cityFields[group].input.value=''; renderCityChips(group); hideSuggestions(group); successMsg.textContent=''; if(!result.textContent.trim() || Object.values(translationsData).some(tr=>result.textContent===tr.noResult)){ result.textContent=translationsData[lang].noResult; } }
+    function renderSuggestions(group, query){ const box=cityFields[group].suggestions; const matches=getFilteredCities(query); box.innerHTML=''; if(!matches.length){ box.classList.remove('visible'); return; } matches.forEach(city=>{ const item=document.createElement('div'); item.className='suggestion-item'; item.innerHTML=`<div class="suggestion-main">${formatSuggestionLabel(city)}</div>${city.parent?`<div class="suggestion-sub">${translationsData[lang].parentAuto}</div>`:''}`; item.addEventListener('mousedown', e=>{ e.preventDefault(); addMatchedCity(group, city); }); box.appendChild(item); }); box.classList.add('visible'); }
+    function getOptionalTags(){ const tags=[]; if(petOption.checked) tags.push('pet'); if(systematikaOption.checked) tags.push('Συστηματικά'); return tags; }
+    function formatDateHashtag(isoDate){ const [year,month,day]=isoDate.split('-').map(Number); const d=new Date(year,month-1,day); const weekday=weekdayGreek[d.getDay()]; return weekday + String(day).padStart(2,'0') + String(month).padStart(2,'0') + String(year); }
+    function formatIsoDate(year,monthIndex,day){ return `${year}-${String(monthIndex+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`; }
+    function renderDates(){ datesSelect.innerHTML=''; datesState.forEach(v=>{ const option=document.createElement('option'); option.value=v; option.textContent='#'+formatDateHashtag(v); option.selected=true; datesSelect.appendChild(option); }); }
+    function toggleDate(isoDate){ if(isoDate < todayIso) return; const idx=datesState.indexOf(isoDate); if(idx===-1){ datesState.push(isoDate); datesState.sort(); } else { datesState.splice(idx,1); } renderDates(); renderCalendar(); successMsg.textContent=''; }
+    function renderCalendar(){ const t=translationsData[lang] || fallback; dateMonthLabel.textContent=`${t.months[calendarViewDate.getMonth()]} ${calendarViewDate.getFullYear()}`; dateWeekdays.innerHTML=t.weekdays.map(d=>`<div>${d}</div>`).join(''); const year=calendarViewDate.getFullYear(); const monthIndex=calendarViewDate.getMonth(); const firstDay=new Date(year,monthIndex,1); const startOffset=(firstDay.getDay()+6)%7; const daysInMonth=new Date(year,monthIndex+1,0).getDate(); dateGrid.innerHTML=''; for(let i=0;i<startOffset;i++){ const e=document.createElement('div'); e.className='date-empty'; dateGrid.appendChild(e); } for(let day=1;day<=daysInMonth;day++){ const isoDate=formatIsoDate(year,monthIndex,day); const isPast=isoDate < todayIso; const btn=document.createElement('button'); btn.type='button'; btn.className='date-day'+(datesState.includes(isoDate)?' selected':''); btn.textContent=String(day); if(isPast) btn.disabled=true; else btn.addEventListener('click',()=>toggleDate(isoDate)); dateGrid.appendChild(btn); } }
+    function generateHashtags(){ successMsg.textContent=''; const optional=getOptionalTags(); if(!selectedCities.origins.length){ result.textContent=translationsData[lang].missingOrigin; return; } if(!selectedCities.destinations.length){ result.textContent=translationsData[lang].missingDestination; return; } if(!datesState.length && !optional.includes('Συστηματικά')){ result.textContent=translationsData[lang].missingDate; return; } const rideTypes=rideTypeSelect.value.split(',').map(v=>v.trim()); let line1=''; if(rideTypes.length===2){ line1=`🚗 #${rideTypes[1]} / 🔍 #${rideTypes[0]}`; } else if(rideTypes[0]==='Προσφέρω'){ line1=`🚗 #${rideTypes[0]}`; } else { line1=`🔍 #${rideTypes[0]}`; } if(passengerCountSelect.value) line1 += ` 👤${passengerCountSelect.value}`; let line2='🛫 '; selectedCities.origins.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); line2 += '🛬 '; selectedCities.destinations.forEach(city=>line2 += `#${normalizeHashtagText(city)} `); let line3=''; if(selectedCities.stops.length){ line3='(🔁 '; selectedCities.stops.forEach(city=>line3 += `#${normalizeHashtagText(city)} `); line3 += ')'; } let line4=''; datesState.forEach(date=>line4 += `#${formatDateHashtag(date)} `); optional.forEach(tag=>line4 += `#${tag} `); let finalText = line1.trim() + '\n' + line2.trim(); if(line3.trim()) finalText += '\n' + line3.trim(); if(line4.trim()) finalText += '\n' + line4.trim(); const message=messageBox.value.trim(); if(message) finalText += '\n\n' + message; result.textContent=finalText; }
+    async function copyResult(){ const text=result.textContent.trim(); if(!text || Object.values(translationsData).some(tr=>text===tr.noResult)) return; try{ await navigator.clipboard.writeText(text); successMsg.textContent=translationsData[lang].copied; }catch{ successMsg.textContent='Copy failed.'; } }
+    function clearAll(){ rideTypeSelect.selectedIndex=0; passengerCountSelect.selectedIndex=0; petOption.checked=false; systematikaOption.checked=false; Object.keys(selectedCities).forEach(group=>{ selectedCities[group]=[]; renderCityChips(group); cityFields[group].input.value=''; hideSuggestions(group); }); datesState.length=0; renderDates(); renderCalendar(); messageBox.value=''; successMsg.textContent=''; result.textContent=translationsData[lang].noResult; }
+    function setLanguage(newLang){ lang=newLang; ['el','en','de','fr','nl','it','es','pl'].forEach(code=>{ const btn=document.getElementById('lang-'+code); if(btn) btn.classList.toggle('active', lang===code); }); const t=translationsData[lang] || fallback; document.getElementById('title').textContent=t.title; document.getElementById('subtitle').textContent=t.subtitle; document.getElementById('top-note').textContent=t.topNote; document.getElementById('missingCityNote').innerHTML=t.missingCityNote; document.getElementById('rideTypeLabel').textContent=t.rideTypeLabel; document.getElementById('rideTypeHint').textContent=t.rideTypeHint; document.getElementById('passengerLabel').textContent=t.passengerLabel; document.getElementById('passengerHint').textContent=passengerHints[lang] || passengerHints.en; document.getElementById('petTagLabel').textContent=t.petTagLabel; document.getElementById('petTagHint').textContent=t.petTagHint; document.getElementById('systematikaHint').textContent=t.systematikaHint; document.getElementById('petHint').textContent=t.petHint; document.getElementById('originsLabel').textContent=t.originsLabel; document.getElementById('originsHint').textContent=t.originsHint; document.getElementById('destinationsLabel').textContent=t.destinationsLabel; document.getElementById('destinationsHint').textContent=t.destinationsHint; document.getElementById('stopsLabel').textContent=t.stopsLabel; document.getElementById('stopsHint').textContent=t.stopsHint; document.getElementById('datesLabel').textContent=t.datesLabel; document.getElementById('datesHint').textContent=t.datesHint; document.getElementById('clearDatesBtn').textContent=t.clearDatesBtn; document.getElementById('generateBtn').textContent=t.generateBtn; document.getElementById('copyBtn').textContent=t.copyBtn; document.getElementById('clearAllBtn').textContent=t.clearAllBtn; document.getElementById('outputLabel').textContent=t.outputLabel; document.getElementById('footerNote').textContent=t.footerNote; document.getElementById('messageLabel').textContent=t.messageLabel; document.getElementById('messageHint').textContent=t.messageHint; messageBox.placeholder=t.messagePlaceholder; const rideOptions=rideOptionsByLang[lang] || rideOptionsByLang.en; Array.from(rideTypeSelect.options).forEach((opt,i)=> opt.textContent = rideOptions[i]); renderCalendar(); if(!result.textContent.trim() || Object.values(translationsData).some(tr=>result.textContent===tr.noResult)){ result.textContent=t.noResult; } }
+    document.getElementById('lang-el').addEventListener('click',()=>setLanguage('el')); document.getElementById('lang-en').addEventListener('click',()=>setLanguage('en')); document.getElementById('lang-de').addEventListener('click',()=>setLanguage('de')); document.getElementById('lang-fr').addEventListener('click',()=>setLanguage('fr')); document.getElementById('lang-nl').addEventListener('click',()=>setLanguage('nl')); document.getElementById('lang-it').addEventListener('click',()=>setLanguage('it')); document.getElementById('lang-es').addEventListener('click',()=>setLanguage('es')); document.getElementById('lang-pl').addEventListener('click',()=>setLanguage('pl'));
+    document.getElementById('clearDatesBtn').addEventListener('click',()=>{ datesState.length=0; renderDates(); renderCalendar(); }); document.getElementById('generateBtn').addEventListener('click',generateHashtags); document.getElementById('copyBtn').addEventListener('click',copyResult); document.getElementById('clearAllBtn').addEventListener('click',clearAll);
+    prevMonthBtn.addEventListener('click',()=>{ calendarViewDate=new Date(calendarViewDate.getFullYear(),calendarViewDate.getMonth()-1,1); renderCalendar(); }); nextMonthBtn.addEventListener('click',()=>{ calendarViewDate=new Date(calendarViewDate.getFullYear(),calendarViewDate.getMonth()+1,1); renderCalendar(); });
+    Object.entries(cityFields).forEach(([group,field])=>{ field.input.addEventListener('input',()=>renderSuggestions(group,field.input.value)); field.input.addEventListener('focus',()=>renderSuggestions(group,field.input.value)); field.input.addEventListener('keydown',(event)=>{ if(event.key==='Enter'){ event.preventDefault(); const matches=getFilteredCities(field.input.value); if(matches.length) addMatchedCity(group,matches[0]); } }); field.input.addEventListener('blur',()=>setTimeout(()=>hideSuggestions(group),120)); });
+    document.addEventListener('click',(event)=>{ Object.entries(cityFields).forEach(([group,field])=>{ if(!field.input.contains(event.target) && !field.suggestions.contains(event.target)) hideSuggestions(group); }); });
+    renderDates(); renderCalendar(); setLanguage('el');
   </script>
 </body>
 </html>
